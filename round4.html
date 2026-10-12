@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Round 4 - QR Investigation</title>
+
+<style>
+
+body{
+background:#08111f;
+color:white;
+font-family:Segoe UI;
+padding:40px;
+}
+
+.card{
+max-width:1000px;
+margin:auto;
+background:#122444;
+padding:30px;
+border-radius:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>📱 ROUND 4 - QUISHING ALERT</h1>
+
+<p>
+A suspicious QR code poster has been discovered.
+</p>
+
+<p>
+Question:
+</p>
+
+<h2>
+What is the cyber security term used for phishing via QR codes?
+</h2>
+
+<input id="answer" style="width:80%;padding:15px">
+
+<br><br>
+
+<button onclick="check()">
+Submit
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function check(){
+
+let a=document.getElementById('answer')
+.value.toLowerCase().trim();
+
+if(a==="quishing"){
+
+document.getElementById('result').innerHTML=
+'<h2 style="color:#7cff8f">✅ Correct</h2><a href="round5.html">Continue</a>';
+
+}
+else{
+
+document.getElementById('result').innerHTML=
+'<h2 style="color:#ff7f7f">❌ Incorrect</h2>';
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
