@@ -1,77 +1,408 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Challenge 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Cyber Team's Challenge</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat0;600;700&display=swap
 
 <style>
 
+:root{
+    --blue:#4fd7ff;
+    --green:#78ff8b;
+    --bg:#07111d;
+    --panel:#0f2138;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
- background:#08111f;
- color:white;
- font-family:Segoe UI;
- text-align:center;
- padding:40px;
+    background:#050d17;
+    color:white;
+    font-family:Montserrat,sans-serif;
+    overflow-x:hidden;
 }
 
-input{
- width:400px;
- padding:12px;
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
+        url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2000&auto=format&fit=crop");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:80px 20px;
 }
 
-button{
- padding:12px 20px;
- background:#00c853;
- color:white;
- border:none;
+.hero-content{
+    max-width:1200px;
+    text-align:center;
+}
+
+.top-banner{
+    display:inline-block;
+    background:#1d8fcb;
+    color:#fff;
+    padding:10px 25px;
+    font-family:'Bebas Neue';
+    letter-spacing:2px;
+    font-size:2rem;
+    margin-bottom:25px;
+}
+
+.main-title{
+    font-family:'Bebas Neue';
+    text-transform:uppercase;
+    line-height:.85;
+    font-size:clamp(4rem,10vw,9rem);
+}
+
+.main-title .blue{
+    color:var(--blue);
+    text-shadow:0 0 25px rgba(79,215,255,.65);
+}
+
+.main-title .green{
+    color:var(--green);
+    text-shadow:0 0 25px rgba(120,255,139,.65);
+}
+
+.tagline{
+    margin-top:25px;
+    font-size:1.3rem;
+    letter-spacing:3px;
+}
+
+.buttons{
+    margin-top:40px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:18px 35px;
+    margin:10px;
+    border-radius:12px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+.start{
+    background:var(--green);
+    color:#000;
+}
+
+.cyberchef{
+    background:var(--blue);
+    color:#000;
+}
+
+/* TEAM BOX */
+
+.team-box{
+    margin-top:35px;
+}
+
+.team-box input{
+    width:350px;
+    max-width:90%;
+    padding:15px;
+    border-radius:10px;
+    border:none;
+    text-align:center;
+    font-size:1rem;
+}
+
+.team-box button{
+    margin-top:10px;
+    padding:12px 25px;
+    background:var(--green);
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* CONTENT */
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.panel{
+    background:rgba(15,33,56,.96);
+    border:2px solid rgba(79,215,255,.35);
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 0 25px rgba(79,215,255,.08);
+}
+
+.panel h2{
+    font-family:'Bebas Neue';
+    color:var(--blue);
+    font-size:2.6rem;
+    letter-spacing:1px;
+    margin-bottom:15px;
+}
+
+.panel.green h2{
+    color:var(--green);
+}
+
+.panel p{
+    line-height:1.8;
+}
+
+.panel ul{
+    padding-left:20px;
+}
+
+.panel li{
+    margin-bottom:10px;
+}
+
+.cta{
+    margin-top:40px;
+    text-align:center;
+}
+
+.cta-box{
+    background:linear-gradient(90deg,#1695d7,#6eff88);
+    color:#001018;
+    border-radius:20px;
+    padding:35px;
+}
+
+.cta-box h2{
+    font-family:'Bebas Neue';
+    font-size:4rem;
+}
+
+.cta-box a{
+    display:inline-block;
+    margin-top:20px;
+    background:#05101b;
+    color:white;
+    text-decoration:none;
+    padding:18px 35px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    padding:35px;
+    color:#999;
+}
+
+.floating-chef{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:var(--blue);
+    color:black;
+    text-decoration:none;
+    padding:15px 20px;
+    border-radius:50px;
+    font-weight:700;
+    z-index:9999;
 }
 
 </style>
 
 <script>
+function saveTeam(){
 
-function checkAnswer(){
+    const team = document.getElementById("team").value;
 
- var answer=document.getElementById("answer").value;
-
- if(answer.toLowerCase()=="the passphrase is matrix."){
-     alert("Correct! Challenge completed.");
-     window.location="challenge2.html";
- }
- else{
-     alert("Incorrect, try again.");
- }
-
+    if(team){
+        localStorage.setItem("teamName", team);
+        alert("Team saved: " + team);
+    }
 }
 
+window.onload=function(){
+
+    const team = localStorage.getItem("teamName");
+
+    if(team){
+        document.getElementById("team").value = team;
+    }
+}
 </script>
 
 </head>
 
 <body>
 
-<h1>Challenge 1</h1>
+<a class="floating-chef"
+href="https://gchq.github.io/CyberChef/"
+target="_blank">
+🔧 CyberChef
+</a>
 
-<p>Decode this binary message:</p>
+<sectionclass="top-banner">
+THE CYBER TEAM'S CHALLENGE
+</div>
+
+<h1 class="main-title">
+CAN YOU ESCAPE THE<br>
+<span class="blue">CYBERCHEF</span><br>
+<span class="green">ESCAPE ROOM?</span>
+</h1>
+
+<div class="tagline">
+DECODE • INVESTIGATE • SOLVE • ESCAPE
+</div>
+
+<div class="buttons">
+
+<a class=eady.html
+🚀 START CHALLENGE
+</a>
+
+<a class="btn cyberchef"
+href="https://gchq.github.io/CyberChef/"
+target="_blank">
+🔧 OPEN CYBERCHEF
+team"
+placeholder="Enter Team Name">
+
+<br>
+
+<button onclick="saveTeam()">
+Save Team
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="panel">
+<h2>📖 THE STORY</h2>
+<p>
+You are the HERO.
+
+You have become trapped in a locked room and must solve
+a series of cyber puzzles to escape.
+
+Each challenge contains clues, hidden messages and
+encoded information waiting to be uncovered.
+</p>
+</div>
+
+<div class="panel green">
+<h2>🎯 YOUR TASK</h2>
+<p>
+Complete the Cyber Team Challenge using CyberChef.
+
+Decode messages, analyse clues, investigate data and
+unlock each room until you finally escape.
+</p>
+</div>
+
+<div class="panel">
+<h2>👨‍🍳 WHAT IS CYBERCHEF?</h2>
+<p>
+CyberChef is the "Cyber Swiss Army Knife".
+
+It can decode, convert, analyse, investigate,
+encrypt and transform data using hundreds of cyber
+operations.
+</p>
+</div>
+
+<div class="panel green">
+<h2>✅ WHAT YOU'LL LEARN</h2>
+<ul>
+<li>Binary decoding</li>
+<li>Base64 analysis</li>
+<li>Caesar and ROT ciphers</li>
+<li>Hash investigation</li>
+<li>QR code analysis</li>
+<li>CyberChef recipes</li>
+<li>Problem solving techniques</li>
+</ul>
+</div>
+
+<div class="panel">
+<h2>⚙ WHAT TO DO</h2>
+<ul>
+<li>Open CyberChef</li>
+<li>Read each challenge carefully</li>
+<li>Use hints when needed</li>
+<li>Solve the challenge</li>
+<li>Unlock the next room</li>
+</ul>
+</div>
+
+<div class="panel green">
+<h2>⚠ IMPORTANT</h2>
+<ul>
+<li>Take your time</li>
+<li>You can play individually or as a team</li>
+<li>Hints may reduce your score</li>
+<li>Answers must be exact</li>
+<li>Have fun and investigate everything</li>
+</ul>
+</div>
+
+</div>
+
+<div class="cta">
+
+<div class="cta-box">
+
+<h2>THINK YOU'VE GOT WHAT IT TAKES?</h2>
 
 <p>
-
-01010100 01101000 01100101 00100000
-01110000 01100001 01110011 01110011
-01110000 01101000 01110010 01100001
-01110011 01100101 00100000 01101001
-01110011 00100000 00100010 01001101
-01000001 01010100 01010010 01001001
-01011000 00100010 00101110
-
+Test your cyber investigation skills.
 </p>
 
-<input id="answer">
+getting-ready.html
+TAKE THE CYBER TEAM CHALLENGE
+</a>
 
-<br><br>
+</div>
 
-<button onclick="checkAnswer()">
-Submit
-</button>
+</div>
+
+</div>
+
+<footer>
+
+CYBER TEAM | ICT DAY CHALLENGE
+
+</footer>
 
 </body>
 </html>
