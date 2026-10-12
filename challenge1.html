@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Challenge 1</title>
+
+<style>
+
+body{
+ background:#08111f;
+ color:white;
+ font-family:Segoe UI;
+ text-align:center;
+ padding:40px;
+}
+
+input{
+ width:400px;
+ padding:12px;
+}
+
+button{
+ padding:12px 20px;
+ background:#00c853;
+ color:white;
+ border:none;
+}
+
+</style>
+
+<script>
+
+function checkAnswer(){
+
+ var answer=document.getElementById("answer").value;
+
+ if(answer.toLowerCase()=="the passphrase is matrix."){
+     alert("Correct! Challenge completed.");
+     window.location="challenge2.html";
+ }
+ else{
+     alert("Incorrect, try again.");
+ }
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Challenge 1</h1>
+
+<p>Decode this binary message:</p>
+
+<p>
+
+01010100 01101000 01100101 00100000
+01110000 01100001 01110011 01110011
+01110000 01101000 01110010 01100001
+01110011 01100101 00100000 01101001
+01110011 00100000 00100010 01001101
+01000001 01010100 01010010 01001001
+01011000 00100010 00101110
+
+</p>
+
+<input id="answer">
+
+<br><br>
+
+<button onclick="checkAnswer()">
+Submit
+</button>
+
+</body>
+</html>
