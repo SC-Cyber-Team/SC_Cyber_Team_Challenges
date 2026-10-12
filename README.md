@@ -43,6 +43,10 @@ python tests/verify.py
 
 The reference checks independently decode the generated evidence, verify the six-room catalogue, check the log rule, and inspect local links. AES verification uses the optional Python `cryptography` package and is skipped if it is unavailable. These checks do not replace testing the recipes in CyberChef or visual testing in browsers.
 
+## Audit
+
+See [AUDIT.md](AUDIT.md) for the live-browser and CyberChef checks performed on 12 October 2026, findings and verification limits.
+
 ## Source and adaptations
 
 The six original exercises come from [CyberChef Challenge](https://sites.google.com/view/cyberchefchallenge/home). The author is credited with a link in every page's footer. No ownership or licence of the original material is asserted; attribution is not a reuse licence. Confirm the original author's reuse terms before wider distribution. Original images and Google Forms are not copied.

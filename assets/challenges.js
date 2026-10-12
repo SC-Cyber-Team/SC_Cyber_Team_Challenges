@@ -116,9 +116,9 @@ const CHALLENGES = [
     "hints": [
       "Letters such as k show these are not hexadecimal values.",
       "These are individual base-32 integers, not an RFC 4648 Base32-encoded string.",
-      "Use From Base with radix 32, then From Charcode with base 10; preserve space-separated tokens between stages."
+      "Use From Charcode. Set Delimiter to Space and Base to 32. Do not use From Base32 or From Base."
     ],
-    "solution": "Each token is a base-32 character code. 24 → 68 → D, 3f → 111 → o. The message is “Don't use QR Codes!” The original invalid Python is replaced by an explicit conversion task.",
+    "solution": "From Charcode with Delimiter Space and Base 32 converts each token directly to a character. 24 → 68 → D, 3f → 111 → o. The message is “Don't use QR Codes!” This is a historical puzzle slogan; QR codes themselves are not inherently unsafe. Inspect their destinations and verify unexpected requests.",
     "original": true,
     "settings": "",
     "points": 200
@@ -216,7 +216,7 @@ const CHALLENGES = [
     "hints": [
       "Dots and dashes form letters.",
       "A slash separates words.",
-      "Use From Morse Code: letter delimiter Space, word delimiter Slash."
+      "Use From Morse Code: letter delimiter Space, word delimiter Forward slash."
     ],
     "solution": "From Morse Code yields OPEN SESAME.",
     "original": false,

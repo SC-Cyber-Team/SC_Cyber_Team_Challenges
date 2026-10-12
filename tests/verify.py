@@ -55,6 +55,14 @@ class Tests(unittest.TestCase):
    if outcome=='outcome=FAIL':failures[key]=failures.get(key,0)+1
    elif failures.get(key,0)>=3:matches.append(src.split('=')[1])
   self.assertEqual(matches,C['logs']['answers'])
+ def test_recipe_hints(self):
+  self.assertIn('From Charcode',C['round5']['hints'][2])
+  self.assertIn('Base to 32',C['round5']['hints'][2])
+  self.assertIn('Forward slash',C['morse']['hints'][2])
+ def test_css_assets(self):
+  css=(ROOT/'assets/style.css').read_text()
+  for ref in re.findall(r"url\(['\"]?([^)'\"]+)",css):
+   if not urlsplit(ref).scheme:self.assertTrue((ROOT/'assets'/ref).exists(),ref)
  def test_links_and_structure(self):
   class Parse(HTMLParser):
    def __init__(self):super().__init__();self.links=[];self.ids=[];self.tags=[]

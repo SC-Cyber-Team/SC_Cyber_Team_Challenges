@@ -99,7 +99,7 @@
 <h2>The challenge library</h2>
 <p>Start with the original journey, or jump into a skill you want to practise.</p>
 </div>
-<span class="eyebrow" id="result-count">
+<span class="eyebrow" id="result-count" role="status" aria-live="polite">
 </span>
 </div>
 <div class="filters">
@@ -107,19 +107,17 @@
 <span class="hidden">Search challenges</span>
 <input id="search" type="search" placeholder="Search challenges…" aria-label="Search challenges">
 </label>
-<label>Difficulty<select id="difficulty">
+<label for="difficulty">Difficulty</label><select id="difficulty">
 <option value="">All levels</option>
 <option>Beginner</option>
 <option>Intermediate</option>
 <option>Advanced</option>
 </select>
-</label>
-<label>Track<select id="track">
+<label for="track">Track</label><select id="track">
 <option value="">All missions</option>
 <option value="original">Original escape room</option>
 <option value="bonus">Bonus missions</option>
 </select>
-</label>
 </div>
 <div class="grid" id="cards">
 </div>
