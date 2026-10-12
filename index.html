@@ -1,301 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The Cyber Team's Challenge</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600&display=swap" rel
- --blue:#4fd7ff;
- --green:#79ff89;
- --bg:#050d18;
- --card:#0f2036;
+<link rel="preconnect" href="https://fonts.googleapisref="https://fonts.gstatic.com"ogleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swaproot{
+    --blue:#4fd7ff;
+    --green:#76ff93;
+    --bg:#050d18;
+    --card:#0f2036;
+    --text:#ffffff;
 }
 
 *{
- margin:0;
- padding:0;
- box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
- background:var(--bg);
- color:white;
- font-family:'Rajdhani',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Rajdhani',sans-serif;
 }
 
+/* Navigation */
+
+nav{
+    background:#071423;
+    border-bottom:1px solid rgba(79,215,255,.3);
+    padding:15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+nav a{
+    color:var(--blue);
+    text-decoration:none;
+    font-weight:700;
+}
+
+nav a:hover{
+    color:var(--green);
+}
+
+/* Hero */
+
 .hero{
- min-height:100vh;
- background:
- linear-gradient(rgba(2,10,20,.7),rgba(2,10,20,.85)),
- radial-gradient(circle at top,#12365f 0%,#050d18 70%);
- display:flex;
- justify-content:center;
- align-items:center;
- text-align:center;
- padding:40px;
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+    text-align:center;
+
+    background:
+    linear-gradient(rgba(2,10,20,.8),rgba(2,10,20,.9)),
+    radial-gradient(circle at top,#144570 0%,#050d18 70%);
 }
 
 .hero-content{
- max-width:1200px;
+    max-width:1200px;
 }
 
 .small-title{
- color:var(--blue);
- font-size:2rem;
- letter-spacing:4px;
- margin-bottom:20px;
- font-weight:700;
+    color:var(--blue);
+    letter-spacing:4px;
+    font-size:1.4rem;
+    font-weight:700;
 }
 
 .big-title{
- font-family:'Orbitron',sans-serif;
- font-size:clamp(60px,10vw,140px);
- line-height:.9;
- text-transform:uppercase;
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(60px,9vw,130px);
+    line-height:.9;
+    margin-top:20px;
 }
 
 .cyber{
- color:var(--blue);
- text-shadow:0 0 25px #4fd7ff;
+    color:var(--blue);
+    text-shadow:0 0 20px var(--blue);
 }
 
 .escape{
- color:var(--green);
- text-shadow:0 0 25px #79ff89;
+    color:var(--green);
+    text-shadow:0 0 20px var(--green);
 }
 
 .tagline{
- margin-top:20px;
- font-size:1.5rem;
- letter-spacing:3px;
+    margin-top:25px;
+    font-size:1.5rem;
+    letter-spacing:2px;
 }
 
 .actions{
- margin-top:40px;
+    margin-top:40px;
 }
 
 .btn{
- display:inline-block;
- text-decoration:none;
- padding:18px 35px;
- margin:10px;
- border-radius:12px;
- font-weight:bold;
- transition:.3s;
+    display:inline-block;
+    margin:10px;
+    padding:18px 35px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
 }
 
 .btn:hover{
- transform:translateY(-3px);
+    transform:translateY(-4px);
 }
 
 .start{
- background:var(--green);
- color:black;
+    background:var(--green);
+    color:black;
 }
 
 .chef{
- background:var(--blue);
- color:black;
+    background:var(--blue);
+    color:black;
 }
 
-.team{
- margin-top:30px;
+/* Sections */
+
+.section{
+    max-width:1400px;
+    margin:auto;
+    padding:70px 20px;
 }
 
-.team input{
- width:350px;
- max-width:90%;
- padding:15px;
- border:none;
- border-radius:10px;
- text-align:center;
- font-size:1rem;
-}
-
-.wrapper{
- max-width:1400px;
- margin:auto;
- padding:60px 20px;
+.section-title{
+    text-align:center;
+    font-family:'Orbitron',sans-serif;
+    color:var(--blue);
+    margin-bottom:40px;
+    font-size:2.5rem;
 }
 
 .grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
- gap:25px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
 .card{
- background:var(--card);
- border:1px solid rgba(79,215,255,.4);
- border-radius:18px;
- padding:30px;
- box-shadow:0 0 25px rgba(79,215,255,.08);
+    background:var(--card);
+    border:1px solid rgba(79,215,255,.3);
+    border-radius:18px;
+    padding:30px;
+    text-decoration:none;
+    color:white;
+    transition:.3s;
 }
 
-.card h2{
- color:var(--blue);
- margin-bottom:20px;
- font-size:2rem;
+.card:hover{
+    transform:translateY(-5px);
+    border-color:var(--green);
 }
 
-.card.green h2{
- color:var(--green);
+.card h3{
+    margin-bottom:15px;
+    color:var(--blue);
+    font-size:1.8rem;
 }
 
-.card p,
-.card li{
- font-size:1.1rem;
- line-height:1.7;
+.card p{
+    font-size:1.1rem;
+    line-height:1.6;
 }
 
-.card ul{
- padding-left:20px;
-}
+/* CTA */
 
 .cta{
- margin:60px auto;
- text-align:center;
- max-width:900px;
- background:linear-gradient(90deg,#22b9ff,#74ff88);
- color:black;
- border-radius:20px;
- padding:40px;
+    text-align:center;
+    margin:50px auto;
+    max-width:900px;
+    padding:40px;
+    border-radius:20px;
+    background:linear-gradient(90deg,#22b9ff,#74ff88);
+    color:black;
 }
 
 .cta h2{
- font-size:3rem;
- margin-bottom:15px;
+    font-size:3rem;
+    margin-bottom:15px;
 }
 
 .cta a{
- display:inline-block;
- margin-top:20px;
- text-decoration:none;
- color:white;
- background:#07111d;
- padding:18px 35px;
- border-radius:10px;
- font-weight:bold;
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    background:#07111d;
+    color:white;
+    padding:18px 35px;
+    border-radius:10px;
 }
 
+/* Footer */
+
 footer{
- text-align:center;
- padding:30px;
- color:#7f8ba0;
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(79,215,255,.2);
+    color:#99a7bb;
 }
 
 </style>
-</head>
 
+</head>
 <body>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html">Home</aa href="getting-ready.html">Getting Ready</a>
+        <a hrefhtmlRound 1</a>
+        <a href="round2.html">Round 2</a>
+href="round3.html">Round 3</a>
+href="round4.html">Round 4</aound5.htmlRound 5</a>
+    </div>
+</nav>
 
 <section class="hero">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<div class="small-title">
-THE CYBER TEAM'S CHALLENGE
-</div>
+        <div class="small-title">
+            THE CYBER TEAM'S CHALLENGE
+        </div>
 
-<div class="big-title">
-CAN YOU ESCAPE<br>
-THE <span class="cyber">CYBERCHEF</span><br>
-<span class="escape">ESCAPE ROOM?</span>
-</div>
+        <div class="big-title">
+            CAN YOU ESCAPE<br>
+            THE <span class="cyber">CYBERCHEF</span><br>
+            <span class="escape">ESCAPE ROOM?</span>
+        </div>
 
-<div class="tagline">
-DECODE • INVESTIGATE • SOLVE • ESCAPE
-</div>
+        <div class="tagline">
+            DECODE • INVESTIGATE • SOLVE • ESCAPE
+        </div>
 
-<div class="actions">
+        <div class="actions">
+            <a class="btn start" href="getting-ready.html">
+                🚀 START MISSION
+            </a>
 
-<a class="btn start" href="getting-ready.html">
-🚀 START CHALLENGE
-</a>
+            <a class="btn chef"
+               href="https://gchq.github.io/CyberChef/"
+               target="_blank">
+               🔧 OPEN CYBERCHEF
+            </a>
+        </div>
 
-<a class="btn chef"
-target="_blank"
-href="https://gchq.github.io/CyberChef/">
-🔧 OPEN CYBERCHEF
-</a>
-
-</div>
-
-<div class="team">
-<input type="text" placeholder="Enter Team Name">
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<div class="wrapper">
+<section class="section">
 
-<div class="grid">
+    <h2 class="section-title">Original Challenges</h2>
 
-<div class="card">
-<h2>📖 THE STORY</h2>
-<p>
-You are the HERO.
+    <div class="grid">
 
-Trapped inside the CyberChef Escape Room,
-you must solve clues, decode messages and
-investigate evidence to escape.
-</p>
-</div>
+        <a href="getting-ready.html" class="card">
+            <h3>🚀 Getting Ready</h3>
+            <p>Learn CyberChef basics before starting the challenge.</p>
+        </a>
 
-<div class="card green">
-<h2>🎯 YOUR TASK</h2>
-<p>
-Work through each room, uncover the clues,
-solve the puzzles and reach freedom.
-</p>
-</div>
+        <a href="round1.html" class="card">
+ 1</h3>
+            <p>Decode your first clues and learn essential techniques.</p>
+        </a>
 
-<div class="card">
-<h2>👨‍🍳 WHAT IS CYBERCHEF?</h2>
-<p>
-CyberChef is the Cyber Swiss Army Knife.
+        <a href="round          <h3>🔐 Round 2</h3>
+            <p>Work with ciphers, encodings and hidden messages.</p>
+        </a>
 
-Use it to analyse, decode, transform,
-convert and investigate data.
-</p>
-</div>
+        <a href="round3.html"   <h3>🧪 Round 3</h3>
+            <p>Investigate hashes, clues and digital evidence.</p>
+        </a>
 
-<div class="card green">
-<h2>✅ WHAT YOU'LL LEARN</h2>
-<ul>
-<li>Binary and Base64</li>
-<li>Caesar Ciphers</li>
-<li>Hash Analysis</li>
-<li>QR Code Investigation</li>
-<li>CyberChef Recipes</li>
-<li>Digital Forensics</li>
-</ul>
-</div>
+        <a href="round4         <h3>📁 Round 4</h3>
+            <p>Apply cyber investigation and forensics skills.</p>
+        </a>
 
-</div>
+        round5.html
+            <h3>🏆 Round 5</h3>
+            <p>Complete the final challenge and escape.</p>
+        </a>
 
-<div class="cta">
+    </div>
 
-<h2>THINK YOU'VE GOT WHAT IT TAKES?</h2>
+</section>
 
-<p>
-Take on the Cyber Team's Challenge and escape the room.
-</p>
+<section class="section">
 
-<a href="getting-ready.html">
-TAKE THE CHALLENGE
-</a>
+    <h2 class="section-title">Advanced Challenges</h2>
 
-</div>
+    <div class="grid">
 
-</div>
+        <div class="card">
+            <h3>🦠 Malware Detective</h3>
+            <p>Analyse suspicious files, URLs and encoded payloads.</p>
+        </div>
+
+        <div class="card">
+            <h3>📊 SOC Analyst</h3>
+            <p>Investigate security alerts and identify attacks.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚨 Incident Response</h3>
+            <p>Build a timeline from evidence and contain the threat.</p>
+        </div>
+
+        <div class="card">
+            <h3>🏴 Capture The Flag</h3>
+            <p>Combine all your skills in a final cyber competition.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="cta">
+
+        <h2>Think You've Got What It Takes?</h2>
+
+        <p>
+            Start with the original CyberChef Escape Room and then take on the advanced challenges.
+        </p>
+
+        <a href="getting-ready.html">
+            TAKE THE CHALLENGE
+        </a>
+
+    </div>
+
+</section>
 
 <footer>
-CYBER TEAM | ICT DAY CHALLENGE
+    CYBER TEAM | ICT DAY CHALLENGE
 </footer>
 
 </body>
