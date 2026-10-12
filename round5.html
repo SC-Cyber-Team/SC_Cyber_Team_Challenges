@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>SOC Investigation</title>
+
+<style>
+
+body{
+background:#08111f;
+color:white;
+font-family:Consolas;
+padding:40px;
+}
+
+.terminal{
+
+max-width:1000px;
+margin:auto;
+
+background:black;
+
+border-radius:20px;
+padding:30px;
+}
+
+.green{
+color:#5dff75;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="terminal">
+
+<h1>🖥️ ROUND 5 - SOC CONSOLE</h1>
+
+<p class="green">
+ALERT: Suspicious encoded payload detected
+</p>
+
+<pre>
+
+48656c6c6f20536f6d657273657421
+
+</pre>
+
+<p>
+Decode the payload.
+</p>
+
+<input id="answer" style="width:80%;padding:15px;">
+
+<br><br>
+
+<button onclick="check()">
+Decode
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function check(){
+
+let a=document.getElementById('answer')
+.value.toLowerCase().trim();
+
+if(a==="hello somerset!"){
+
+document.getElementById('result').innerHTML=
+'<h2 style="color:#5dff75">✅ Payload Decoded</h2><a href="final-room.html">Final Room</a>';
+
+}
+else{
+
+document.getElementById('result').innerHTML=
+'<h2 style="color:#ff7f7f">❌ Incorrect</h2>';
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
