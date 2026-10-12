@@ -1,82 +1,97 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Round 4 - QR Investigation</title>
-
-<style>
-
-body{
-background:#08111f;
-color:white;
-font-family:Segoe UI;
-padding:40px;
-}
-
-.card{
-max-width:1000px;
-margin:auto;
-background:#122444;
-padding:30px;
-border-radius:20px;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="card">
-
-<h1>📱 ROUND 4 - QUISHING ALERT</h1>
-
-<p>
-A suspicious QR code poster has been discovered.
-</p>
-
-<p>
-Question:
-</p>
-
-<h2>
-What is the cyber security term used for phishing via QR codes?
-</h2>
-
-<input id="answer" style="width:80%;padding:15px">
-
-<br><br>
-
-<button onclick="check()">
-Submit
-</button>
-
-<div id="result"></div>
-
-</div>
-
-<script>
-
-function check(){
-
-let a=document.getElementById('answer')
-.value.toLowerCase().trim();
-
-if(a==="quishing"){
-
-document.getElementById('result').innerHTML=
-'<h2 style="color:#7cff8f">✅ Correct</h2><a href="round5.html">Continue</a>';
-
-}
-else{
-
-document.getElementById('result').innerHTML=
-'<h2 style="color:#ff7f7f">❌ Incorrect</h2>';
-
-}
-
-}
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Decode, investigate and escape. 25 hands-on CyberChef challenges from SC Cyber Team.">
+<title>SC Cyber Team | Challenge Lab</title>
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/challenges.js">
 </script>
-
+<script defer src="assets/app.js">
+</script>
+</head>
+<body data-page="challenge" data-challenge="round4">
+<a class="skip" href="#main">Skip to main content</a>
+<header>
+<div class="wrap">
+<a class="brand" href="index.html">
+<span class="mark" aria-hidden="true">&gt;_</span>SC CYBER TEAM</a>
+<nav aria-label="Main navigation">
+<a href="index.html#library">Challenge library</a>
+<a href="getting-ready.html">Escape room</a>
+<a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener noreferrer">CyberChef ↗</a>
+</nav>
+</div>
+</header>
+<main id="main" class="wrap">
+<a class="back" href="index.html#library">← Challenge library</a>
+<div class="challenge-layout">
+<div id="challenge-main">
+<div class="eyebrow" id="meta">
+</div>
+<h1 class="challenge-title" id="title">Challenge</h1>
+<p class="lead" id="brief">
+</p>
+<section class="panel">
+<h2>Recovered evidence</h2>
+<pre class="evidence" id="evidence">
+</pre>
+<pre class="settings hidden" id="settings">
+</pre>
+<div class="actions">
+<button id="copy" type="button">Copy evidence</button>
+<a id="chef" class="button secondary" href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener noreferrer">Open in CyberChef ↗</a>
+</div>
+<p id="copy-status" role="status" class="notice">
+</p>
+</section>
+<section class="panel">
+<h2>Submit your finding</h2>
+<form id="answer-form">
+<label class="answer-label" for="answer">Your answer</label>
+<input id="answer" class="answer-input" autocomplete="off" spellcheck="false" required>
+<div class="actions">
+<button class="primary" type="submit">Check answer →</button>
+</div>
+</form>
+<p id="feedback" class="feedback" role="status" aria-live="polite">
+</p>
+<p id="save-status" class="notice" role="status">
+</p>
+<div id="solved-panel" class="hidden">
+<h3>What the evidence tells us</h3>
+<p id="solution">
+</p>
+<a id="next" class="button primary" href="index.html">Next challenge →</a>
+</div>
+</section>
+<noscript>
+<p>Enable JavaScript to load this challenge and check your answer.</p>
+</noscript>
+</div>
+<aside>
+<section class="panel">
+<div class="eyebrow">Need a nudge?</div>
+<h2>Progressive hints</h2>
+<p class="notice">Reveal one at a time. Hints do not cost points.</p>
+<div id="hints">
+</div>
+</section>
+<section class="panel">
+<h2>Your mission route</h2>
+<div class="room-links" id="room-links">
+</div>
+</section>
+<p class="notice">Answers ignore letter case, extra spaces and final sentence punctuation. Use only the synthetic evidence supplied here.</p>
+</aside>
+</div>
+</main>
+<footer>
+<div class="wrap">
+<span>SC CYBER TEAM / CHALLENGE LAB</span>
+<span>Original escape-room exercises adapted from <a href="https://sites.google.com/view/cyberchefchallenge/home">CyberChef Challenge</a>. Tool by <a href="https://github.com/gchq/CyberChef">GCHQ</a>.</span>
+</div>
+</footer>
 </body>
 </html>
