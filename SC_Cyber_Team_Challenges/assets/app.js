@@ -1,0 +1,34 @@
+'use strict';
+const KEY = 'sc-cyber-challenges-v1';
+const normalize = value => value.normalize('NFKC').toLowerCase().trim().replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').replace(/[.!?]+$/,'');
+function readProgress(){try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');return {solved:Array.isArray(v.solved)?[...new Set(v.solved.filter(id=>CHALLENGES.some(c=>c.id===id)))]:[]};}catch{return {solved:[]};}}
+let progress=readProgress();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(progress));return true;}catch{return false;}}
+const $=id=>document.getElementById(id);
+function el(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
+function link(text,href,className){const n=el('a',text,className);n.href=href;return n;}
+function challengeUrl(c){return 'challenge.html?id='+encodeURIComponent(c.id);}
+function solved(c){return progress.solved.includes(c.id);}
+function route(container){CHALLENGES.filter(c=>c.original).forEach((c,i)=>{const a=link(String(i).padStart(2,'0'),challengeUrl(c),solved(c)?'done':'');a.title=c.title;a.setAttribute('aria-label',c.title+(solved(c)?', completed':''));container.append(a);});}
+function summary(){const n=progress.solved.length;const score=CHALLENGES.filter(solved).reduce((s,c)=>s+c.points,0);if($('progress-text'))$('progress-text').textContent=`${n} / ${CHALLENGES.length} challenges completed · ${score} points`;
+if($('progress-bar'))$('progress-bar').value=n;
+if($('resume')){const c=CHALLENGES.find(c=>c.original&&!solved(c));$('resume').href=c?challengeUrl(c):'final-room.html';$('resume').textContent=c?(n?'Continue mission →':'Start the escape room →'):'View escape result →';}
+}
+function home(){route($('route'));summary();
+const render=()=>{const query=$('search').value.toLowerCase().trim(),level=$('difficulty').value,track=$('track').value;const items=CHALLENGES.filter(c=>(!level||c.level===level)&&(!track||(track==='original'?c.original:!c.original))&&`${c.title} ${c.category} ${c.brief}`.toLowerCase().includes(query));$('cards').replaceChildren();$('result-count').textContent=`${items.length} challenges`;
+for(const c of items){const card=el('article',undefined,'card');const top=el('div',undefined,'card-top');top.append(el('span',c.original?'ESCAPE ROOM':'BONUS MISSION'),el('span',c.level,`tag ${c.level}`));card.append(top,el('h3',c.title),el('p',c.brief));const bottom=el('div',undefined,'card-bottom');bottom.append(el('span',solved(c)?'✓ COMPLETED':`${c.category} · ${c.points} pts`,solved(c)?'solved':''),link('Open →',challengeUrl(c)));card.append(bottom);$('cards').append(card);}if(!items.length)$('cards').append(el('p','No matching challenges. Try another filter.','empty'));};
+['search','difficulty','track'].forEach(id=>$(id).addEventListener('input',render));render();$('reset').addEventListener('click',()=>{if(confirm('Reset all completed challenges and points on this device?')){progress={solved:[]};const stored=save();$('storage-note').textContent=stored?'Progress reset.':'Progress reset for this session. Browser storage is unavailable.';$('route').replaceChildren();route($('route'));summary();render();}});
+}
+function challenge(){const id=new URLSearchParams(location.search).get('id')||document.body.dataset.challenge;const c=CHALLENGES.find(c=>c.id===id);if(!c){$('challenge-main').replaceChildren(el('h1','Challenge not found'),link('Return to challenges','index.html'));return;}
+document.title=c.title+' | SC Cyber Team';$('title').textContent=c.title;$('meta').textContent=`${c.original?'Escape room':'Bonus mission'} / ${c.category} / ${c.level} / ${c.points} points`;$('brief').textContent=c.brief;$('evidence').textContent=c.evidence;if(c.settings){$('settings').textContent=c.settings;$('settings').classList.remove('hidden');}
+// Prefill only the synthetic input; leave the recipe for the learner to construct.
+const input=btoa(String.fromCharCode(...new TextEncoder().encode(c.evidence)));
+$('chef').href='https://gchq.github.io/CyberChef/#input='+input;
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(c.evidence);$('copy-status').textContent='Evidence copied.';}catch{$('copy-status').textContent='Clipboard unavailable. Select and copy the evidence above.';}});
+c.hints.forEach((hint,i)=>{const d=el('details');d.append(el('summary',`Hint ${i+1}`),el('p',hint));$('hints').append(d);});
+const list=c.original?CHALLENGES.filter(x=>x.original):CHALLENGES.filter(x=>!x.original);for(const item of list){const a=link((solved(item)?'✓ ':'')+item.title,challengeUrl(item),solved(item)?'done':'');if(item.id===c.id)a.setAttribute('aria-current','page');$('room-links').append(a);}
+function completed(){ $('solution').textContent=c.solution;$('solved-panel').classList.remove('hidden');$('feedback').textContent='Correct. Challenge complete!';$('feedback').className='feedback success';const idx=list.findIndex(x=>x.id===c.id),next=list[idx+1];$('next').href=next?challengeUrl(next):(c.original?'final-room.html':'index.html');$('next').textContent=next?'Next challenge →':c.original?'Check escape progress →':'Back to library →';}
+if(solved(c))completed();$('answer-form').addEventListener('submit',e=>{e.preventDefault();const a=$('answer').value;if(!a.trim()){$('feedback').textContent='Enter an answer first.';$('feedback').className='feedback';return;}if(c.answers.some(x=>normalize(x)===normalize(a))){if(!solved(c))progress.solved.push(c.id);const stored=save();completed();if(!stored)$('save-status').textContent='Completed for this session. Your browser could not save progress.';}else{$('feedback').textContent='Not quite. Check the recipe, or reveal the next hint.';$('feedback').className='feedback';}});
+}
+function finalRoom(){const originals=CHALLENGES.filter(c=>c.original),count=originals.filter(solved).length;if(count===originals.length){$('completion-title').textContent='You escaped.';$('completion-message').textContent='All six original exercises complete. Your next mission: take on the bonus library.';$('flag').textContent='FLAG{CYBERCHEF_ESCAPE_MASTER}';}else{$('completion-title').textContent='The exit is still locked.';$('completion-message').textContent=`You have completed ${count} of ${originals.length} original exercises. Finish the remaining rooms to escape.`;const next=originals.find(c=>!solved(c));$('continue').href=challengeUrl(next);$('continue').textContent='Continue the escape room →';}route($('route'));}
+const page=document.body.dataset.page;if(page==='home')home();if(page==='challenge')challenge();if(page==='final')finalRoom();
