@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Round 3 - Investigation</title>
+
+<style>
+
+body{
+background:#08111f;
+color:white;
+font-family:Segoe UI;
+padding:40px;
+}
+
+.card{
+max-width:1000px;
+margin:auto;
+background:#122444;
+padding:30px;
+border-radius:20px;
+}
+
+.hash{
+color:#4fd7ff;
+font-size:20px;
+word-break:break-all;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🕵️ ROUND 3 - HASH INVESTIGATION</h1>
+
+<p>
+Evidence recovered from a suspect system:
+</p>
+
+<div class="hash">
+1c370c494cf2367de0d06dee51db433ccf5104fc344c0cab9c1b353b1c4c50cf
+</div>
+
+<p>
+Use CyberChef to identify the hash algorithm.
+</p>
+
+<input id="answer" placeholder="e.g. MD5" style="width:80%;padding:15px">
+
+<br><br>
+
+<button onclick="check()">Submit</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function check(){
+
+let a=document.getElementById('answer')
+.value.toLowerCase().trim();
+
+if(a==="sha256"){
+
+document.getElementById('result').innerHTML=
+'<h2 style="color:#7cff8f">✅ Correct</h2><a href="round4.html">Continue</a>';
+
+}
+else{
+
+document.getElementById('result').innerHTML=
+'<h2 style="color:#ff7f7f">❌ Incorrect</h2>';
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
