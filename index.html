@@ -1,92 +1,363 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SC Cyber Team Challenge</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Cyber Team's Challenge</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;swap
 
 <style>
 
-body{
-    background:#08111f;
-    color:white;
-    font-family:Segoe UI, Arial;
-    text-align:center;
-    margin:0;
+:root{
+ --blue:#4fd7ff;
+ --green:#79ff89;
+ --bg:#050d18;
+ --card:#0f2036;
 }
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+body{
+ background:var(--bg);
+ color:white;
+ font-family:'Rajdhani',sans-serif;
+}
+
+/* Hero */
 
 .hero{
-    padding:80px 20px;
+ min-height:100vh;
+
+ background:
+ linear-gradient(rgba(2,10,20,.7),rgba(2,10,20,.85)),
+ radial-gradient(circle at top,#12365f 0%,#050d18 70%);
+
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+
+ padding:40px;
 }
 
-h1{
-    color:#52d9ff;
-    font-size:60px;
+.hero-content{
+ max-width:1200px;
 }
 
-h2{
-    color:#74ff8a;
+.small-title{
+ color:var(--blue);
+ font-size:2rem;
+ letter-spacing:4px;
+ margin-bottom:20px;
+ font-weight:700;
 }
 
-.button{
-    display:inline-block;
-    padding:15px 30px;
-    background:#00c853;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
+.big-title{
+ font-family:'Orbitron',sans-serif;
+ font-size:clamp(60px,10vw,140px);
+ line-height:.9;
+ text-transform:uppercase;
+}
+
+.cyber{
+ color:var(--blue);
+ text-shadow:0 0 25px #4fd7ff;
+}
+
+.escape{
+ color:var(--green);
+ text-shadow:0 0 25px #79ff89;
+}
+
+.tagline{
+ margin-top:20px;
+ font-size:1.5rem;
+ letter-spacing:3px;
+}
+
+.actions{
+ margin-top:40px;
+}
+
+.btn{
+ display:inline-block;
+
+ text-decoration:none;
+
+ padding:18px 35px;
+
+ margin:10px;
+
+ border-radius:12px;
+
+ font-weight:bold;
+
+ transition:.3s;
+}
+
+.btn:hover{
+ transform:translateY(-3px);
+}
+
+.start{
+ background:var(--green);
+ color:black;
+}
+
+.chef{
+ background:var(--blue);
+ color:black;
+}
+
+.team{
+ margin-top:30px;
+}
+
+.team input{
+ width:350px;
+ max-width:90%;
+
+ padding:15px;
+
+ border:none;
+
+ border-radius:10px;
+
+ text-align:center;
+
+ font-size:1rem;
+}
+
+/* Panels */
+
+.wrapper{
+ max-width:1400px;
+ margin:auto;
+ padding:60px 20px;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+ gap:25px;
 }
 
 .card{
-    max-width:900px;
-    margin:30px auto;
-    background:#10233f;
-    padding:25px;
-    border-radius:12px;
+
+ background:var(--card);
+
+ border:1px solid rgba(79,215,255,.4);
+
+ border-radius:18px;
+
+ padding:30px;
+
+ box-shadow:0 0 25px rgba(79,215,255,.08);
+}
+
+.card h2{
+ color:var(--blue);
+ margin-bottom:20px;
+ font-size:2rem;
+}
+
+.card.green h2{
+ color:var(--green);
+}
+
+.card p,
+.card li{
+ font-size:1.1rem;
+ line-height:1.7;
+}
+
+.card ul{
+ padding-left:20px;
+}
+
+/* CTA */
+
+.cta{
+
+ margin:60px auto;
+
+ text-align:center;
+
+ max-width:900px;
+
+ background:linear-gradient(90deg,#22b9ff,#74ff88);
+
+ color:black;
+
+ border-radius:20px;
+
+ padding:40px;
+}
+
+.cta h2{
+
+ font-size:3rem;
+
+ margin-bottom:15px;
+}
+
+.cta a{
+
+ display:inline-block;
+
+ margin-top:20px;
+
+ text-decoration:none;
+
+ color:white;
+
+ background:#07111d;
+
+ padding:18px 35px;
+
+ border-radius:10px;
+
+ font-weight:bold;
+}
+
+footer{
+
+ text-align:center;
+
+ padding:30px;
+
+ color:#7f8ba0;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="hero">
+<section class="hero">
 
-<h1>THE CYBER TEAM CHALLENGE</h1>
+<div class="hero-content">
 
-<h2>Can You Escape The CyberChef Escape Room?</h2>
+<div class="small-title">
+THE CYBER TEAM'S CHALLENGE
+</div>
+
+<div class="big-title">
+CAN YOU ESCAPE<br>
+THE <span class="cyber">CYBERCHEF</span><br>
+<span class="escape">ESCAPE ROOM?</span>
+</div>
+
+<div class="tagline">
+DECODE • INVESTIGATE • SOLVE • ESCAPE
+</div>
+
+<div class="actions">
+
+<a class="ady.html
+🚀 START CHALLENGE
+</a>
+
+<a class="btn chef"
+target="_blank"
+href="https://gchq.github.io/CyberChef/">
+🔧 OPEN CYBERCHEF
+</a>
+
+</="Enter Team Name">
+
+</div>
+
+</div>
+
+</section>
+
+<div class="wrapper">
+
+<div class="grid">
+
+<div class="card">
+
+<h2>📖 THE STORY</h2>
 
 <p>
-Decode • Investigate • Solve • Escape
+You are the HERO.
+
+Trapped inside the CyberChef Escape Room,
+you must solve clues, decode messages and
+investigate evidence to escape.
 </p>
 
-<a class="button"tart Challenge
-</a>
+</div>
+
+<div class="card green">
+
+<h2>🎯 YOUR TASK</h2>
+
+<p>
+Work through each room, uncover the clues,
+solve the puzzles and reach freedom.
+</p>
 
 </div>
 
 <div class="card">
 
-<h2>The Story</h2>
+<h2>👨‍🍳 WHAT IS CYBERCHEF?</h2>
 
 <p>
-You are trapped in the CyberChef Escape Room.
-Solve the challenges, earn points and escape.
-</p>
+CyberChef is the Cyber Swiss Army Knife.
 
-<p>
-Open CyberChef in another tab:
-</p>
-
-<p>
-<a style="color:#52d9ff;"
-href="https://gchq.github.io/CyberChef/"
-target="_blank">
-Launch CyberChef
-</a>
+Use it to analyse, decode, transform,
+convert and investigate data.
 </p>
 
 </div>
+
+<div class="card green">
+
+<h2>✅ WHAT YOU'LL LEARN</h2>
+
+<ul>
+<li>Binary and Base64</li>
+<li>Caesar Ciphers</li>
+<li>Hash Analysis</li>
+<li>QR Code Investigation</li>
+<li>CyberChef Recipes</li>
+<li>Digital Forensics</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="cta">
+
+<h2>THINK YOU'VE GOT WHAT IT TAKES?</h2>
+
+<p>
+Take on the Cyber Team's Challenge and escape the room.
+</p>
+
+getting-ready.html
+TAKE THE CHALLENGE
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+CYBER TEAM | ICT DAY CHALLENGE
+
+</footer>
 
 </body>
 </html>
