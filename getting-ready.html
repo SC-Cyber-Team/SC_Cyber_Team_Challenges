@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mission Briefing</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Segoe UI,sans-serif;
+    background:#08111f;
+    color:white;
+}
+
+.header{
+    background:#112542;
+    padding:20px;
+    text-align:center;
+    border-bottom:2px solid #4fd7ff;
+}
+
+.header h1{
+    color:#4fd7ff;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.card{
+    background:#122444;
+    border:1px solid rgba(79,215,255,.3);
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.card h2{
+    color:#7cff8f;
+}
+
+.answer{
+    width:100%;
+    padding:15px;
+    border-radius:10px;
+    border:none;
+    margin-top:15px;
+}
+
+.btn{
+
+    display:inline-block;
+
+    background:#7cff8f;
+
+    color:black;
+
+    font-weight:bold;
+
+    padding:15px 30px;
+
+    border:none;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+    cursor:pointer;
+}
+
+.hints{
+    margin-top:20px;
+}
+
+.hint{
+    background:#0a1830;
+    padding:10px;
+    margin-top:10px;
+    border-left:4px solid #4fd7ff;
+}
+
+.success{
+    color:#7cff8f;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.error{
+    color:#ff7f7f;
+    margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>MISSION BRIEFING</h1>
+<p>Getting Ready</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Recovered Message</h2>
+
+<p>
+A basic Caesar cipher has been intercepted.
+</p>
+
+<h1 style="color:#4fd7ff;">
+Phhw ph dw wkh pdlq grruv.
+</h1>
+
+<p>
+Your mission is to decode the message
+using CyberChef.
+</p>
+
+<a
+href="https://gchq.github.io/CyberChef/"
+target="_blank"
+class="btn"
+style="text-decoration:none;">
+🔧 Open CyberChef
+</a>
+
+</divid="answer"
+placeholder="Enter decoded phrase">
+
+<br>
+
+<button class="btn" onclick="checkAnswer()">
+Submit Answer
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>Hints</h2>
+
+<div class="hint">
+Hint 1: Search for "ROT13".
+</div>
+
+<div class="hint">
+Hint 2: The message is not ROT13.
+</div>
+
+<div class="hint">
+Hint 3: Try changing the shift value.
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function checkAnswer(){
+
+let answer =
+document.getElementById("answer")
+.value
+.toLowerCase()
+.trim();
+
+if(answer==="meet me at the main doors."){
+
+document.getElementById("result").innerHTML=
+'<div class="success">✅ Correct! Room Unlocked.<br><br><a href="round1.html" class="btn">Continue to Round 1</a></div>';
+
+}
+else{
+
+document.getElementById("result").innerHTML=
+'<div class="error">❌ Incorrect. Try again.</div>';
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
