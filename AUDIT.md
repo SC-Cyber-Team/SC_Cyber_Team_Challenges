@@ -2,6 +2,19 @@
 
 Reviewed the homepage, posters, all 35 CyberChef records and legacy routes, the 14-message quiz, A Day at Work, Outsmart the Hacker, both six-case investigation tracks and The Executive Call. The review covers source content, interface behaviour, assessment flows and references; it is not a claim to reproduce every Microsoft product version pixel for pixel.
 
+## Second interface pass — 13 October 2026
+
+Further improvements after the initial audit:
+
+- Reworked the Executive Call into a meeting stage with a right-side Chat/People/Transcript pane. The pane buttons toggle open and closed and expose their selected state. Decision cards no longer stretch into empty space.
+- Added external identity context and compact participant tiles. The fictional organizer uses an external tenant in this scenario; an External badge is context, not a fraud verdict.
+- The ended briefing transitions into a separate Teams meeting chat, with a meeting-ended notice and independent directory checks. It no longer keeps the executive's image on screen as though the briefing were continuing live.
+- Added a Quick Assist walkthrough: helper-supplied code, screen-sharing consent, then a separate control prompt. Its preview actions never start a session or grant control.
+- Rebuilt the invoice as a PDF-style document with billing metadata, line item, purchase order and total.
+- Replaced plain sharing-settings text with an expandable Microsoft 365-style audience and permission panel. The request's original settings remain fixed for the assessment; Copy link and Send are local previews.
+
+These refinements follow the Microsoft product references listed below. Additional regression checks cover panel toggles, the meeting-to-chat transition, independent verification and the access walkthrough. The synthetic speech and static portrait remain media limitations; no higher-quality voice or video generation capability was available in this workspace.
+
 ## Corrections made
 
 | Finding | Correction |
