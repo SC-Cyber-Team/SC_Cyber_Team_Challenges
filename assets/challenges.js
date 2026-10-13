@@ -590,5 +590,252 @@ const CHALLENGES = [
       "From Hex",
       "ROT13"
     ]
+  },
+  {
+    "id": "atbash",
+    "title": "The alphabet mirror",
+    "level": "Beginner",
+    "category": "Ciphers",
+    "brief": "Use CyberChef to recover the flag from a mirrored alphabet. Letters have been replaced by their partners at the opposite end of the alphabet; digits and punctuation stay in place.",
+    "evidence": "UOZT{NRIILI_ZOKSZYVG_4826}",
+    "answers": [
+      "FLAG{MIRROR_ALPHABET_4826}"
+    ],
+    "hints": [
+      "A becomes Z, B becomes Y, and so on.",
+      "This is an Atbash substitution, not a simple rotation.",
+      "Apply Atbash Cipher to the evidence."
+    ],
+    "solution": "Atbash Cipher mirrors alphabetic characters to recover the flag. Like Caesar ciphers, this is an educational substitution rather than secure encryption.",
+    "original": false,
+    "settings": "",
+    "points": 100,
+    "operations": [
+      "Atbash Cipher"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "octal",
+    "title": "The eight-digit lock",
+    "level": "Beginner",
+    "category": "Encoding",
+    "brief": "Use CyberChef to decode a keypad message written as octal character values. Submit the complete flag.",
+    "evidence": "106 114 101 107 173 117 103 124 101 114 137 114 117 103 113 137 66 61 67 63 175",
+    "answers": [
+      "FLAG{OCTAL_LOCK_6173}"
+    ],
+    "hints": [
+      "Every token uses only digits 0 through 7.",
+      "The tokens represent character codes in base 8.",
+      "Use From Octal with a Space delimiter."
+    ],
+    "solution": "From Octal maps each base-8 token to a character and reveals the flag.",
+    "original": false,
+    "settings": "",
+    "points": 100,
+    "operations": [
+      "From Octal"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "utf16",
+    "title": "The wide-character note",
+    "level": "Intermediate",
+    "category": "Encoding",
+    "brief": "Use CyberChef to recover text from a Windows-style hexadecimal export. The original text uses UTF-16 little-endian character encoding. Submit the complete flag.",
+    "evidence": "46 00 4c 00 41 00 47 00 7b 00 57 00 49 00 44 00 45 00 5f 00 54 00 45 00 58 00 54 00 5f 00 39 00 30 00 33 00 35 00 7d 00",
+    "answers": [
+      "FLAG{WIDE_TEXT_9035}"
+    ],
+    "hints": [
+      "Many zero bytes appear between printable characters.",
+      "First convert the hexadecimal representation into bytes.",
+      "Use From Hex → Decode text; choose UTF-16LE (1200)."
+    ],
+    "solution": "From Hex restores the bytes; Decode text with UTF-16LE (1200) interprets pairs of bytes correctly. Removing zeroes is not a general substitute for decoding UTF-16.",
+    "original": false,
+    "settings": "",
+    "points": 200,
+    "operations": [
+      "From Hex",
+      "Decode text"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "hexdump",
+    "title": "The damaged export",
+    "level": "Intermediate",
+    "category": "Forensics",
+    "brief": "Use CyberChef to reconstruct a flag from a hexdump containing offsets and hexadecimal bytes. The ASCII preview was omitted from the export. Submit the decoded output.",
+    "evidence": "00000000  46 4c 41 47 7b 48 45 58  44 55 4d 50 5f 52 45 43  \n00000010  4f 56 45 52 59 5f 32 36  35 38 7d  ",
+    "answers": [
+      "FLAG{HEXDUMP_RECOVERY_2658}"
+    ],
+    "hints": [
+      "The offsets at the start of each line are formatting, not part of the data.",
+      "From Hex alone can accidentally include the offsets.",
+      "Use From Hexdump on the complete evidence."
+    ],
+    "solution": "From Hexdump strips the export formatting and reconstructs only the data bytes. The result is the flag.",
+    "original": false,
+    "settings": "",
+    "points": 200,
+    "operations": [
+      "From Hexdump"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "extract-urls",
+    "title": "URLs in the noise",
+    "level": "Intermediate",
+    "category": "Investigation",
+    "brief": "Use CyberChef to decode the Base64 event export, then use an extraction operation to list just its two URLs. Submit both URLs in the original order, separated by a space or newline.",
+    "evidence": "ZXZlbnQ9ZG93bmxvYWQgdXJsPWh0dHBzOi8vZGVsaXZlcnkuZXhhbXBsZS9maWxlcy9BN1E0CnVzZXI9YW5hbHlzdCBub3RlPXJldmlldwpldmVudD1jYWxsYmFjayB1cmw9aHR0cHM6Ly9zdGF0dXMuZXhhbXBsZS9jaGVjay9COU0y",
+    "answers": [
+      "https://delivery.example/files/A7Q4\nhttps://status.example/check/B9M2"
+    ],
+    "hints": [
+      "The outer representation is Base64.",
+      "After decoding, filter the mixed log text for URL values.",
+      "Use From Base64 → Extract URLs; leave Only show hostname unticked."
+    ],
+    "solution": "From Base64 restores the mixed event text. Extract URLs lists the two complete URLs, without the surrounding log fields. The example domains are synthetic; visiting them is not part of the task.",
+    "original": false,
+    "settings": "",
+    "points": 200,
+    "operations": [
+      "From Base64",
+      "Extract URLs"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "extract-ips",
+    "title": "Indicator roundup",
+    "level": "Intermediate",
+    "category": "Investigation",
+    "brief": "Use CyberChef to decode a sensor report and extract its IPv4 addresses. Submit only the two addresses in their original order, separated by a space or newline.",
+    "evidence": "c2Vuc29yPXdlc3Qgc3JjPTE5Mi4wLjIuODcgb3V0Y29tZT1ERU5ZCnNlbnNvcj1lYXN0IHNyYz0xOTguNTEuMTAwLjY0IG91dGNvbWU9QUxMT1cKY2FzZT02NDkyIG5vdGU9bm8tYWRkcmVzcy1oZXJl",
+    "answers": [
+      "192.0.2.87\n198.51.100.64"
+    ],
+    "hints": [
+      "The numeric case ID is not an IP address.",
+      "Decode the Base64 layer before extracting indicators.",
+      "Use From Base64 → Extract IP addresses with IPv4 enabled and IPv6 disabled."
+    ],
+    "solution": "The recipe produces 192.0.2.87 and 198.51.100.64. Documentation-only address ranges keep this exercise independent of real targets.",
+    "original": false,
+    "settings": "",
+    "points": 200,
+    "operations": [
+      "From Base64",
+      "Extract IP addresses"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "json-config",
+    "title": "The configuration vault",
+    "level": "Intermediate",
+    "category": "Web",
+    "brief": "Use CyberChef to decode and format a Base64 configuration export. Find the access_token inside the vault object and submit its complete value.",
+    "evidence": "eyJldmVudCI6InJlY292ZXJlZF9jb25maWciLCJkZWNveSI6Im5vdC10aGUtYW5zd2VyIiwidmF1bHQiOnsiYWNjZXNzX3Rva2VuIjoiRkxBR3tKU09OX1ZBVUxUXzcxODR9IiwiZXhwaXJlcyI6InRyYWluaW5nLW9ubHkifX0=",
+    "answers": [
+      "FLAG{JSON_VAULT_7184}"
+    ],
+    "hints": [
+      "The export is Base64-encoded JSON.",
+      "Readable indentation will help reveal the nested vault object.",
+      "Use From Base64 → JSON Beautify, then read vault.access_token."
+    ],
+    "solution": "The recipe restores and formats the JSON. The nested access_token is the requested flag; the decoy field is not the answer.",
+    "original": false,
+    "settings": "",
+    "points": 200,
+    "operations": [
+      "From Base64",
+      "JSON Beautify"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "raw-deflate",
+    "title": "The headerless archive",
+    "level": "Advanced",
+    "category": "Compression",
+    "brief": "Use CyberChef to restore a hexadecimal export of a raw DEFLATE stream. This stream has no gzip or zlib wrapper. Submit the recovered flag.",
+    "evidence": "73f37174af0e720c8f777175f3710c718d37b53436af0500",
+    "answers": [
+      "FLAG{RAW_DEFLATE_5937}"
+    ],
+    "hints": [
+      "The hexadecimal layer is only the transport representation.",
+      "Gunzip expects a gzip wrapper; this evidence does not have one.",
+      "Use From Hex → Raw Inflate with its default settings."
+    ],
+    "solution": "From Hex restores the compressed bytes. Raw Inflate decompresses the headerless DEFLATE stream and reveals the flag.",
+    "original": false,
+    "settings": "",
+    "points": 300,
+    "operations": [
+      "From Hex",
+      "Raw Inflate"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "xor-search",
+    "title": "The missing XOR key",
+    "level": "Advanced",
+    "category": "Encryption",
+    "brief": "Use CyberChef to recover a flag encrypted with an unknown repeating single-byte XOR key. The plaintext begins with FLAG{. Use CyberChef to search the key space and submit the plaintext flag, without the key label.",
+    "evidence": "717b76704c62797c79786079686f7865687c726e680f0301054a",
+    "answers": [
+      "FLAG{UNKNOWN_XOR_KEY_8462}"
+    ],
+    "hints": [
+      "The hexadecimal input needs to become bytes first.",
+      "For a one-byte XOR key there are only 256 possibilities.",
+      "Use From Hex → XOR Brute Force. Set Key length to 1, Sample length to 100, and Crib to FLAG{. Copy the readable flag from the matching output."
+    ],
+    "solution": "XOR Brute Force identifies key 37 (hexadecimal) and reveals the flag. The known prefix is a crib that helps isolate readable output. This demonstrates why repeating one-byte XOR is weak.",
+    "original": false,
+    "settings": "",
+    "points": 300,
+    "operations": [
+      "From Hex",
+      "XOR Brute Force"
+    ],
+    "revision": 1
+  },
+  {
+    "id": "evidence-hash",
+    "title": "Evidence integrity check",
+    "level": "Advanced",
+    "category": "Hashes",
+    "brief": "Use CyberChef to calculate the SHA-256 fingerprint of the exact bytes inside this Base64 evidence package. Decode first, then hash the decoded bytes. Submit all 64 hexadecimal characters. Preserve the final newline.",
+    "evidence": "Y2FzZV9pZCxzdGF0dXMKQ0hLLTM4Mjcsc2VhbGVkCkNISy02NDU5LHJldmlldwo=",
+    "answers": [
+      "883b0006844afc192f31f22efce39cbbee0e71463ec167fe81186030cb174f08"
+    ],
+    "hints": [
+      "Hashing the Base64 text produces a different digest.",
+      "The decoded package contains CSV text, including line-feed bytes.",
+      "Use From Base64 → SHA2, size 256. Do not edit the intermediate output."
+    ],
+    "solution": "The recipe hashes the exact decoded evidence bytes, producing 883b0006844afc192f31f22efce39cbbee0e71463ec167fe81186030cb174f08. Even changing a newline changes the fingerprint.",
+    "original": false,
+    "settings": "",
+    "points": 300,
+    "operations": [
+      "From Base64",
+      "SHA2"
+    ],
+    "revision": 1
   }
 ];

@@ -1,6 +1,6 @@
 # SC Cyber Team — Challenge Lab
 
-A responsive, browser-based CyberChef training site with **25 challenges**: the six original escape-room exercises and 19 bonus missions. No server, accounts, build system or participant data collection is required.
+A responsive, browser-based CyberChef training site with **35 challenges**: the six original escape-room exercises and 29 bonus missions. No server, accounts, build system or participant data collection is required.
 
 ## Features
 
@@ -24,7 +24,7 @@ From the repository directory:
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000`. Serve over HTTP instead of opening files directly for reliable clipboard and storage behaviour. Clipboard may be unavailable in some browser contexts; manual selection remains possible. Progress cannot sync between devices. Clearing browser storage clears progress.
+Open `http://localhost:8000`. Serve over HTTP instead of opening files directly for reliable clipboard and storage behaviour. The answer textarea accepts multi-line extraction results; whitespace normalization allows equivalent space-separated answers. Clipboard may be unavailable in some browser contexts; manual selection remains possible. Progress cannot sync between devices. Clearing browser storage clears progress.
 
 ## CyberChef-only task design
 
@@ -38,7 +38,7 @@ The static answer checker validates the result, not the external application tha
 - [Matt Not Max's CyberChef Recipes](https://github.com/mattnotmax/cyberchef-recipes): extraction before decoding, nested obfuscation and analyst workflows. Only patterns informed this site; the evidence here is newly authored and synthetic.
 - [CyberChef Playground](https://github.com/ChickenLoner/CyberChef-Playground): recipe submission and server-side execution for stronger validation.
 
-Possible next lessons: extracting indicators from noisy text; identifying file signatures from a hexdump; UTF-16LE text conversion; Fork/Merge for multiple timestamps; recovering a harmless flag with XOR Brute Force. Keep inputs synthetic, outputs unambiguous, and test each exact recipe before publication.
+The new lessons implement indicator extraction, hexdump recovery, UTF-16LE conversion and XOR Brute Force. Possible next lessons include file-signature identification, Fork/Merge for multiple timestamps and regex capture groups. Keep inputs synthetic, outputs unambiguous, and test each exact recipe before publication.
 
 ## Add or edit challenges
 

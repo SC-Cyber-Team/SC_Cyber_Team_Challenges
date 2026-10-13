@@ -1,3 +1,13 @@
+# Ten additional challenges — 13 October 2026
+
+The site now contains 35 challenges: six original-track exercises and 29 bonus missions, worth 6,200 points in total. Existing challenge IDs, answers and saved completions are preserved.
+
+New lessons: Atbash, octal character codes, UTF-16LE conversion, hexdump reconstruction, URL extraction, IP extraction, JSON configuration recovery, raw DEFLATE, unknown-key XOR and exact-byte SHA-256 hashing. Each uses newly authored synthetic evidence, three hints and a verified CyberChef recipe. The answer box supports multi-line outputs from extraction operations.
+
+All ten new recipes were tested in the official hosted CyberChef tool, including formatting-sensitive hexdump byte boundaries. Independent reference checks verify the evidence and answers, and app interaction tests cover all 35 questions. Earlier dated counts below describe earlier versions of the site.
+
+---
+
 # CyberChef-only revision — 13 October 2026
 
 This revision supersedes the task descriptions in the historical audit below.

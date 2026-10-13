@@ -1,5 +1,5 @@
 """Verify puzzle evidence using independent standard-library transformations."""
-import base64,codecs,gzip,hashlib,json,re,unittest
+import base64,codecs,gzip,hashlib,json,re,unittest,zlib
 from datetime import datetime,timezone
 from pathlib import Path
 from html import unescape
@@ -13,9 +13,9 @@ def norm(s):return re.sub(r'[.!?]+$','',re.sub(r'\s+',' ',s.strip().lower()))
 class Tests(unittest.TestCase):
  def check(self,id,result):self.assertIn(norm(result),[norm(a) for a in C[id]['answers']],id)
  def test_catalogue(self):
-  self.assertEqual(len(DATA),25);self.assertEqual(len(C),25)
+  self.assertEqual(len(DATA),35);self.assertEqual(len(C),35)
   self.assertEqual(sum(c['original'] for c in DATA),6)
-  self.assertEqual(sum(c['points'] for c in DATA),4100)
+  self.assertEqual(sum(c['points'] for c in DATA),6200)
   for c in DATA:
    self.assertEqual(len(c['hints']),3);self.assertTrue(c['answers']);self.assertTrue(c['solution']);self.assertTrue(c['operations']);self.assertIn('Use CyberChef',c['brief'])
  def test_evidence(self):
@@ -44,6 +44,23 @@ class Tests(unittest.TestCase):
   self.check('ioc',base64.b64decode(evidence('ioc')).decode().replace('hxxps','https').replace('[.]','.'))
   self.check('quishing',unquote(base64.b64decode(evidence('quishing')).decode()))
   self.check('final-recipe',codecs.decode(bytes.fromhex(base64.b64decode(evidence('final-recipe')).decode()).decode(),'rot13'))
+ def test_new_evidence(self):
+  text=evidence('atbash')
+  self.check('atbash',''.join(chr(90-(ord(x)-65)) if 'A'<=x<='Z' else chr(122-(ord(x)-97)) if 'a'<=x<='z' else x for x in text))
+  self.check('octal',''.join(chr(int(x,8)) for x in evidence('octal').split()))
+  self.check('utf16',bytes.fromhex(evidence('utf16')).decode('utf-16le'))
+  raw=''.join(line.split('  ',1)[1].replace(' ','') for line in evidence('hexdump').splitlines())
+  self.check('hexdump',bytes.fromhex(raw).decode())
+  urls=base64.b64decode(evidence('extract-urls')).decode()
+  self.check('extract-urls','\n'.join(re.findall(r'https://[^\s]+',urls)))
+  ips=base64.b64decode(evidence('extract-ips')).decode()
+  self.check('extract-ips','\n'.join(re.findall(r'(?<=src=)[0-9.]+',ips)))
+  config=json.loads(base64.b64decode(evidence('json-config')))
+  self.check('json-config',config['vault']['access_token'])
+  self.check('raw-deflate',zlib.decompress(bytes.fromhex(evidence('raw-deflate')),-15).decode())
+  cipher=bytes.fromhex(evidence('xor-search'));matches=[bytes(x^key for x in cipher) for key in range(256) if bytes(x^key for x in cipher).startswith(b'FLAG{')]
+  self.assertEqual(len(matches),1);self.check('xor-search',matches[0].decode())
+  self.check('evidence-hash',hashlib.sha256(base64.b64decode(evidence('evidence-hash'))).hexdigest())
  def test_aes(self):
   try:from cryptography.hazmat.primitives.ciphers import Cipher,algorithms,modes
   except ImportError:self.skipTest('Install cryptography for AES verification')
