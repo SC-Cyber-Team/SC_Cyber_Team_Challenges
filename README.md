@@ -97,3 +97,9 @@ Run `node tests/wifi-interactions.cjs` for the Wi-Fi notice assessment and inspe
 `assets/journey.js` stores only completed activity IDs and their content revisions in the device-local `cyber-team-workplace-progress-v1` key. No answer, score, name, timestamp or contact data is stored. Seven activities are tracked, including the two investigation tracks separately. Completion is recorded on reaching a debrief, irrespective of score. The homepage shows completion badges, a suggested next activity and a reversible reset. CyberChef progress uses its existing separate key. When storage is unavailable, completion is held only for the current page visit.
 
 Run `node tests/journey-interactions.cjs` for storage and navigation checks. `tests/viewport-check.html` renders the live pages inside 320/390/768/1280-pixel frames for browser layout and keyboard checks; it is not linked from the product navigation.
+
+## Interactive verification and caller responses
+
+Executive Call offers Rachel and Tom directory callbacks before any decision. Their generated recordings have native playback controls and transcripts; early verification persists in the story and directory view. Starting a callback stops the briefing, with a portrait fallback and a reload control for reviewing the recording. Callback playback is stopped and handlers detached on navigation.
+
+Outsmart’s call can be answered, challenged, ended or declined. Challenging the helpdesk claim plays a second pressure response in the same caller voice. Following the proposed fix records an unsafe assessment choice; ending and using the directory records the independent-verification choice and opens the helpdesk response. Declining alone leaves the verification decision open. The debrief includes the visitor’s local interaction route; this is not persisted with completion progress. No actual sign-in or outgoing call occurs.
