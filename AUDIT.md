@@ -1,3 +1,47 @@
+# Realism and usability review — 13 October 2026
+
+Reviewed the homepage, posters, all 35 CyberChef records and legacy routes, the 14-message quiz, A Day at Work, Outsmart the Hacker, both six-case investigation tracks and The Executive Call. The review covers source content, interface behaviour, assessment flows and references; it is not a claim to reproduce every Microsoft product version pixel for pixel.
+
+## Corrections made
+
+| Finding | Correction |
+| --- | --- |
+| The laptop-to-phone Authenticator example used a legacy Approve/Deny layout. | Added the number-matching entry preview and “No, it’s not me”; Yes is unavailable without a sign-in number. Updated the caller and Teams instructions to model coaching through number matching. |
+| Quick Assist requests asked the recipient to supply a connection code. | The purported helper now supplies the code; the recipient is asked to enter it, allow screen sharing and separately allow requested control. |
+| Training instructions appeared inside the ClickFix email. | Removed the simulation explanation from the message body. Safety information stays outside the fictional message. No executable command is supplied. |
+| A personal email from Priya looked like an automated SharePoint notification. | Rendered it as a direct email with an ordinary signature and document link. |
+| Sender popovers included coaching text. | Limited the client display to sender fields; explanatory evidence stays on the evidence desk. A Day at Work now has a separate native-style sender-details dropdown. |
+| External Teams requests lacked an acceptance action. | Added preview-context banners, local Accept controls and Block and report controls. Acceptance does not establish trust or produce a verdict. |
+| Guest lobby labels used an ambiguous Guest badge. | The anonymous assistant is labelled Unverified, consistent with the chosen meeting scenario. |
+| The QR scenario described an overlaid sticker without depicting it. | Added a visibly separate replacement sticker treatment. |
+| Teams Leave only displayed advice. | The Executive Call now leaves the recreated meeting, stops playback and provides an optional review route while trusted records remain available. |
+| Three large homepage promotions competed for attention. | Replaced them with six distinct cards, durations and descriptions. The 35-mission count is explicitly for CyberChef. |
+
+## Primary references
+
+- [Authenticator number matching](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-number-match): other-device number entry differs from some same-device app flows.
+- [Quick Assist](https://support.microsoft.com/en-us/windows/apps/solve-pc-problems-remotely-using-quick-assist): helper-supplied code, screen-sharing consent and additional control consent.
+- [Teams external requests](https://support.microsoft.com/en-us/teams/chat/accept-block-or-delete-chat-or-meeting-requests-from-people-outside-your-organization-in-microsoft-t): preview and acceptance/blocking behaviour.
+- [Teams anonymous participants](https://learn.microsoft.com/en-us/microsoftteams/anonymous-users-in-meetings): Unverified, Email Verified and External are different states.
+- [Outlook phishing reporting](https://support.microsoft.com/en-us/outlook/mail/phishing-and-suspicious-behavior-in-outlook): sender indicators and reporting behaviour depend on configuration.
+- [OneDrive sharing](https://support.microsoft.com/en-gb/onedrive/share-files-and-folders-in-microsoft-onedrive): specific recipients, existing access and permission options. Expiry support varies; the scenarios do not promise universal expiry controls.
+- [Microsoft’s September 2026 helpdesk impersonation research](https://www.microsoft.com/en-us/security/blog/2026/09/02/impersonating-it-support-threat-actors-turn-remote-session-into-enterprise-wide-access/): genuine Teams and remote-support tools can carry malicious requests.
+- [Hong Kong official deepfake case account](https://www.info.gov.hk/gia/general/202406/26/P2024062600192p.htm): a pre-recorded impersonation conference followed by messaging instructions informed the executive scenario.
+
+## Validation
+
+The complete automated suite passes: 35 CyberChef answer flows and persistence/gating checks; all 14 quiz outcomes; A Day at Work safe and unsafe decisions; 128 combinations across the investigation tracks; 243 Executive Call combinations and audio controls; 243 Outsmart combinations and its number-matching rejection control. Inline scripts parse. Static HTML IDs and local asset references were checked. Visual checks and actual media playback are checked separately on the deployed site; simulated unit tests do not establish sound quality or actual browser playback.
+
+## Remaining realism limits
+
+The Executive Call has a synthetic still and synthesized narration. The audio is intelligible training narration, rather than a convincing executive performance; the still does not move or lip-sync. Higher-quality acted narration and a properly produced fictional video would make this the strongest candidate for a further media upgrade.
+
+The exercises use illustrative client layouts and fictional `.example` addresses, with a clear training label. Product labels and layouts can vary by version, tenant configuration and device. A familiar app, an External label, polished wording, correct supplier details or passing email authentication does not decide legitimacy on its own. Both genuine and malicious examples remain in the cases.
+
+Connected investigations use guided recovery and continue the story after a decision for practice. They do not simulate the full consequences of sending money, granting access or authorising a live session. Scores are local practice feedback, not security assurance or a monitored leaderboard.
+
+---
+
 # Ten additional challenges — 13 October 2026
 
 The site now contains 35 challenges: six original-track exercises and 29 bonus missions, worth 6,200 points in total. Existing challenge IDs, answers and saved completions are preserved.
