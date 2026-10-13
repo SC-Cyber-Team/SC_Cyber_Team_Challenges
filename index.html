@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Decode, investigate and escape. 35 hands-on CyberChef challenges from SC Cyber Team.">
 <title>Cyber Team Challenges | Decode, Investigate, Solve</title>
-<link rel="stylesheet" href="assets/style.css?v=20261013-posters">
+<link rel="stylesheet" href="assets/style.css?v=20261013-design">
 <script defer src="assets/challenges.js?v=20261013-extra">
 </script>
 <script defer src="assets/app.js?v=20261013-extra">
@@ -20,48 +20,13 @@
 <nav aria-label="Main navigation">
 <a href="index.html#library">Challenge library</a>
 <a href="getting-ready.html">Escape room</a>
-<a href="#posters">Posters</a>
+<a href="posters.html">Posters</a>
 <a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener noreferrer">CyberChef ↗</a>
 </nav>
 </div>
 </header>
 <main id="main">
-<section class="hero">
-<div class="wrap">
-<div class="hero-grid">
-<div>
-<div class="eyebrow">
-<span class="status-dot">
-</span>The Cyber Team’s Challenge</div>
-<h1>Can you escape the<br>
-<span class="poster-blue">CyberChef</span><br>
-<span>escape room?</span>
-</h1>
-<p class="lead">A locked room. A trail of encoded clues. Your toolkit is CyberChef. Decode the evidence, connect the dots and unlock your next move.</p>
-<div class="actions">
-<a class="button primary" id="resume" href="getting-ready.html">Start the escape room →</a>
-<a class="button secondary" href="#library">Explore all challenges</a>
-</div>
-<p class="notice">No sign-up. Learn at your own pace. Progress stays on this device.</p>
-</div>
-<div class="mission-visual"><a href="#posters" aria-label="Explore the Cyber Team poster collection"><img class="hero-poster" src="assets/posters/escape-room.webp" alt="CyberChef escape room poster showing a laptop, clues and an open doorway" width="1024" height="1536" fetchpriority="high"></a><div class="console" aria-label="Escape room mission route">
-<div class="console-bar">
-<span>MISSION / ESCAPE-01</span>
-<span>● LOCAL SESSION</span>
-</div>
-<div class="console-body">
-<div class="eyebrow">Incoming transmission</div>
-<pre>&gt; connection established<br>&gt; evidence recovered<br>&gt; 01001101 01000001 01010100<br>&gt; awaiting analyst input<span aria-hidden="true"> ▌</span>
-</pre>
-<strong>Six rooms. One way out.</strong>
-<div class="route" id="route">
-</div>
-<small>Decode → investigate → solve → escape</small>
-</div>
-</div>
-</div>
-</div>
-<div class="stats">
+<section class="hero"><div class="hero-art" aria-hidden="true"></div><div class="wrap"><div class="hero-copy"><div class="eyebrow brush">The Cyber Team’s Challenge</div><h1>Can you escape the<br><span class="poster-blue">CyberChef</span><br><span>escape room?</span></h1><p class="hero-kicker">Decode · Investigate · Solve · Escape</p><p class="lead">A locked room. A trail of hidden clues. Use CyberChef to turn the evidence into your way out.</p><div class="actions"><a class="button primary" id="resume" href="getting-ready.html">Start the escape room →</a><a class="button secondary" href="#library">Choose a challenge</a></div><p class="notice">Free to play · No sign-up · Solo or as a team</p></div><div class="mission-strip"><strong>Six rooms. One way out.</strong><div class="route" id="route"></div><span class="notice">Follow the clues. Unlock the exit.</span></div><div class="stats">
 <div>
 <strong id="challenge-total">35</strong>
 <span>hands-on challenges</span>
@@ -82,23 +47,17 @@
 </div>
 <progress id="progress-bar" max="35" value="0" aria-label="Completed challenges">
 </progress>
-<p class="notice" id="storage-note">Every mission uses CyberChef. Hints are free. Revised missions require a fresh solve; other saved completions stay.</p>
+<p class="notice" id="storage-note">Every mission uses CyberChef. Hints are free. Your progress is saved on this device.</p>
 </div>
 </div>
 </section>
-<section class="poster-intro wrap" aria-label="Mission briefing">
-<article class="info-panel story"><h2>▤ The story</h2><h3>You are the HERO!</h3><p>You find yourself trapped in a locked room. Solve a trail of encoded clues and encryption puzzles to escape. Your toolkit is CyberChef.</p></article>
-<article class="info-panel task"><h2>◎ Your task</h2><p>Complete the six-room escape journey, then take on 29 bonus missions. Play individually or work together as a team.</p></article>
-<article class="info-panel tool"><h2>♧ What is CyberChef?</h2><p>A free tool from GCHQ for analysing, decoding and transforming data. Build a recipe, add your evidence and investigate the output.</p><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener noreferrer">Open your toolkit ↗</a></article>
-<article class="info-panel steps"><h2>⚙ What to do</h2><ol><li>Choose a challenge and solve it in CyberChef.</li><li>Read the evidence carefully.</li><li>Open CyberChef and build a recipe.</li><li>Check your answer and unlock the next room.</li></ol></article>
-<article class="info-panel important"><h2>! Before you start</h2><p>Allow roughly 30–40 minutes for the original journey. There is no enforced timer. Hints are free; incorrect answers do not lose points.</p><p>No sign-up needed. Progress is saved on this device.</p></article>
-<article class="info-panel learn"><h2>✦ What you’ll learn</h2><ul><li>Encoding, encryption and hashes</li><li>How to build CyberChef recipes</li><li>Problem-solving and evidence analysis</li><li>Practical cyber awareness</li></ul></article>
-</section>
+<section class="poster-intro wrap" aria-label="Mission briefing"><article class="info-panel story"><h2><span aria-hidden="true">▤</span> The story</h2><h3>You are the hero.</h3><p>You’re trapped in a locked room. Encoded notes and hidden messages hold the way out. Crack each clue in CyberChef to unlock the next room.</p></article><article class="info-panel task"><h2><span aria-hidden="true">◎</span> Your task</h2><p>Take on the six-room escape journey, or choose a standalone mission below.</p><ol><li>Inspect the evidence.</li><li>Build your recipe in CyberChef.</li><li>Submit your finding and move on.</li></ol></article><article class="info-panel steps"><h2><span aria-hidden="true">✦</span> Your toolkit</h2><p>CyberChef transforms, decodes and analyses data. New to it? The first room gets you started. Hints are free, and there’s no timer.</p><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener noreferrer">Open CyberChef ↗</a></article></section>
+<section class="section wrap featured"><div class="eyebrow">Pick up the trail</div><h2 class="brush-title">Think like an analyst</h2><div class="feature-grid"><a class="feature-card" href="challenge.html?id=round1"><img src="assets/scene-escape.webp" alt="A glowing doorway and laptop in the escape room" width="1536" height="1024" loading="lazy"><div><span class="eyebrow">Encoding · Beginner</span><h3>The binary door</h3><p>Turn a string of ones and zeroes into your next move.</p><strong>Investigate →</strong></div></a><a class="feature-card threat" href="challenge.html?id=quishing"><img src="assets/scene-threat.webp" alt="A phone and suspicious message symbols in cyan and red light" width="1536" height="1024" loading="lazy"><div><span class="eyebrow">Web · Beginner</span><h3>The QR upgrade</h3><p>An urgent upgrade. An encoded link. Where does it really lead?</p><strong>Inspect the evidence →</strong></div></a><a class="feature-card evidence" href="challenge.html?id=evidence-hash"><img src="assets/scene-evidence.webp" alt="A forensic workstation with a magnifying glass and evidence" width="1536" height="1024" loading="lazy"><div><span class="eyebrow">Hashes · Advanced</span><h3>Evidence integrity</h3><p>Recover the exact bytes and calculate their fingerprint.</p><strong>Take the challenge →</strong></div></a></div></section>
 <section class="section wrap" id="library">
 <div class="section-head">
 <div>
 <div class="eyebrow">Choose your next mission</div>
-<h2>The challenge library</h2>
+<h2 class="brush-title">The challenge library</h2>
 <p>Start with the original journey, or jump into a skill you want to practise.</p>
 </div>
 <span class="eyebrow" id="result-count" role="status" aria-live="polite">
@@ -127,8 +86,8 @@
 <p>This interactive challenge library needs JavaScript enabled.</p>
 </noscript>
 </section>
-<section class="section wrap" id="posters"><div class="eyebrow">Explore · Learn · Share</div><h2 class="brush-title">The poster collection</h2><p>Five visual briefings from the Cyber Team. Open a poster to explore it, or download a copy.</p><p class="notice">These are the supplied original posters; printed event labels and escape-room rules may differ from this website. The CyberChef demonstration poster includes its worked answer.</p><div class="poster-gallery"><article class="poster-card"><a href="assets/posters/escape-room.webp" target="_blank" rel="noopener" aria-label="View CyberChef escape room poster full size"><img src="assets/posters/escape-room-thumb.webp" alt="CyberChef escape room cyber awareness poster" width="360" height="540" loading="lazy"></a><div><h3>CyberChef escape room</h3><p>Decode. Investigate. Solve. Escape.</p><a href="assets/posters/escape-room.webp" target="_blank" rel="noopener">View full size ↗</a> · <a href="assets/posters/escape-room.webp" download="escape-room-poster.webp">Download</a></div></article><article class="poster-card"><a href="assets/posters/cyberchef.webp" target="_blank" rel="noopener" aria-label="View Can CyberChef crack it? poster full size"><img src="assets/posters/cyberchef-thumb.webp" alt="Can CyberChef crack it? cyber awareness poster" width="360" height="540" loading="lazy"></a><div><h3>Can CyberChef crack it?</h3><p>Follow the evidence and uncover the hidden message.</p><a href="assets/posters/cyberchef.webp" target="_blank" rel="noopener">View full size ↗</a> · <a href="assets/posters/cyberchef.webp" download="cyberchef-poster.webp">Download</a></div></article><article class="poster-card"><a href="assets/posters/passwords.webp" target="_blank" rel="noopener" aria-label="View Who’s been pwned? poster full size"><img src="assets/posters/passwords-thumb.webp" alt="Who’s been pwned? cyber awareness poster" width="360" height="540" loading="lazy"></a><div><h3>Who’s been pwned?</h3><p>Explore password reuse and breach awareness.</p><a href="assets/posters/passwords.webp" target="_blank" rel="noopener">View full size ↗</a> · <a href="assets/posters/passwords.webp" download="passwords-poster.webp">Download</a></div></article><article class="poster-card"><a href="assets/posters/quishing.webp" target="_blank" rel="noopener" aria-label="View Think before you scan poster full size"><img src="assets/posters/quishing-thumb.webp" alt="Think before you scan cyber awareness poster" width="360" height="540" loading="lazy"></a><div><h3>Think before you scan</h3><p>Discover the risks behind unexpected QR codes.</p><a href="assets/posters/quishing.webp" target="_blank" rel="noopener">View full size ↗</a> · <a href="assets/posters/quishing.webp" download="quishing-poster.webp">Download</a></div></article><article class="poster-card"><a href="assets/posters/phishing.webp" target="_blank" rel="noopener" aria-label="View Can you spot the phish? poster full size"><img src="assets/posters/phishing-thumb.webp" alt="Can you spot the phish? cyber awareness poster" width="360" height="540" loading="lazy"></a><div><h3>Can you spot the phish?</h3><p>Recognise suspicious messages and misleading links.</p><a href="assets/posters/phishing.webp" target="_blank" rel="noopener">View full size ↗</a> · <a href="assets/posters/phishing.webp" download="phishing-poster.webp">Download</a></div></article></div></section>
-</main>
+
+<section class="poster-teaser wrap"><div><span class="eyebrow">Keep the clues close</span><h2>Explore the poster collection</h2><p>Phishing, QR codes, passwords and CyberChef — five visual guides to explore and share.</p></div><a class="button secondary" href="posters.html">View the posters →</a></section></main>
 <footer>
 <div class="wrap">
 <span>SC CYBER TEAM / CHALLENGE LAB</span>
