@@ -15,3 +15,5 @@ h1,h2,h3{overflow-wrap:normal}h2,h3{font-family:Poster,'Arial Narrow',sans-serif
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
 textarea{font:inherit;padding:11px 13px;border:1px solid var(--line);border-radius:5px;background:#04121e;color:var(--text);resize:vertical}textarea:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
+
+.hero h1 .hero-question{font-size:.72em;color:var(--text)}
