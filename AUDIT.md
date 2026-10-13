@@ -15,6 +15,7 @@ Reviewed the homepage, posters, all 35 CyberChef records and legacy routes, the 
 | Guest lobby labels used an ambiguous Guest badge. | The anonymous assistant is labelled Unverified, consistent with the chosen meeting scenario. |
 | The QR scenario described an overlaid sticker without depicting it. | Added a visibly separate replacement sticker treatment. |
 | Teams Leave only displayed advice. | The Executive Call now leaves the recreated meeting, stops playback and provides an optional review route while trusted records remain available. |
+| Every sound answer in A Day at Work appeared first. | Balanced answer positions across the five decisions so location is not a shortcut. |
 | Three large homepage promotions competed for attention. | Replaced them with six distinct cards, durations and descriptions. The 35-mission count is explicitly for CyberChef. |
 
 ## Primary references
