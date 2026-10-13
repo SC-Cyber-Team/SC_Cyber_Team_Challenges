@@ -17,3 +17,5 @@ h1,h2,h3{overflow-wrap:normal}h2,h3{font-family:Poster,'Arial Narrow',sans-serif
 textarea{font:inherit;padding:11px 13px;border:1px solid var(--line);border-radius:5px;background:#04121e;color:var(--text);resize:vertical}textarea:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
 
 .hero h1 .hero-question{font-size:.72em;color:var(--text)}
+
+.quiz-promo{display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:28px;padding-bottom:28px;border:1px solid #ba88ff99;border-radius:8px;background:linear-gradient(90deg,#0a1536f5,#0a1536cc),url('scene-threat.webp') right center/cover;margin-top:25px;margin-bottom:20px}.quiz-promo h2{font-size:39px;color:#d3b5ff;margin:8px 0}.quiz-promo p{max-width:680px;margin:0;color:var(--muted);font-size:15px}.quiz-promo>.button{flex-shrink:0}@media(max-width:700px){.quiz-promo{margin-left:18px;margin-right:18px;flex-direction:column;align-items:start;gap:18px}.quiz-promo h2{font-size:34px}}
