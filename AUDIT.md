@@ -9,6 +9,7 @@ Further improvements after the initial audit:
 - Reworked the Executive Call into a meeting stage with a right-side Chat/People/Transcript pane. The pane buttons toggle open and closed and expose their selected state. Decision cards no longer stretch into empty space.
 - Added external identity context and compact participant tiles. The fictional organizer uses an external tenant in this scenario; an External badge is context, not a fraud verdict.
 - The ended briefing transitions into a separate Teams meeting chat, with a meeting-ended notice and independent directory checks. It no longer keeps the executive's image on screen as though the briefing were continuing live.
+- Isolated native client headings from the poster typography, so Outlook subjects and Quick Assist prompts keep ordinary case and system fonts.
 - Added a Quick Assist walkthrough: helper-supplied code, screen-sharing consent, then a separate control prompt. Its preview actions never start a session or grant control.
 - Rebuilt the invoice as a PDF-style document with billing metadata, line item, purchase order and total.
 - Replaced plain sharing-settings text with an expandable Microsoft 365-style audience and permission panel. The request's original settings remain fixed for the assessment; Copy link and Send are local previews.
