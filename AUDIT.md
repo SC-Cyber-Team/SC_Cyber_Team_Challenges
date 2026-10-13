@@ -14,7 +14,7 @@ Further improvements after the initial audit:
 - Rebuilt the invoice as a PDF-style document with billing metadata, line item, purchase order and total.
 - Replaced plain sharing-settings text with an expandable Microsoft 365-style audience and permission panel. The request's original settings remain fixed for the assessment; Copy link and Send are local previews.
 
-These refinements follow the Microsoft product references listed below. Additional regression checks cover panel toggles, the meeting-to-chat transition, independent verification and the access walkthrough. The synthetic speech and static portrait remain media limitations; no higher-quality voice or video generation capability was available in this workspace.
+These refinements follow the Microsoft product references listed below. Additional regression checks cover panel toggles, the meeting-to-chat transition, independent verification and the access walkthrough. At that stage, the synthetic speech and static portrait remained limitations. They were subsequently upgraded through HeyGen, as recorded below.
 
 ## Corrections made
 
@@ -49,7 +49,7 @@ The complete automated suite passes: 35 CyberChef answer flows and persistence/g
 
 ## Remaining realism limits
 
-The Executive Call has a synthetic still and synthesized narration. The audio is intelligible training narration, rather than a convincing executive performance; the still does not move or lip-sync. Higher-quality acted narration and a properly produced fictional video would make this the strongest candidate for a further media upgrade.
+The Executive Call now includes natural generated speech and a lip-synced fictional presenter through HeyGen’s official embed. The free account exposes sharing and embedding while reporting video download unavailable, so the website uses the official player rather than hosting an exported video. The player retains HeyGen’s controls and watermark. Audio-only playback has timed captions. No voice of a real executive was cloned.
 
 The exercises use illustrative client layouts and fictional `.example` addresses, with a clear training label. Product labels and layouts can vary by version, tenant configuration and device. A familiar app, an External label, polished wording, correct supplier details or passing email authentication does not decide legitimacy on its own. Both genuine and malicious examples remain in the cases.
 
@@ -146,3 +146,11 @@ All 25 expected answers were accepted in the deployed website using a desktop Ch
 ## Limits
 
 Desktop Chromium was tested. Physical iPhone/Safari and Android devices were not tested; responsive CSS was inspected but is not a substitute for those device checks. Static answers and local scores can be inspected or edited by participants; this is a learning tool, not a tamper-resistant competition platform. External CyberChef availability is outside this site's control. Progress is local to a browser/device, and cannot persist if browser storage is unavailable.
+
+## Media upgrades — 13 October 2026
+
+The full 21.6-second fictional executive video was verified playing to completion with sound through the official free-plan embed. It plays inside the recreated Teams meeting. Leaving or continuing removes the player; starting the audio-only alternative unloads the video to prevent duplicate audio. The transcript remains available through the Teams pane.
+
+Outsmart the Hacker now includes an 11-second fictional caller and a 19-second independently verified helpdesk callback, generated through HeyGen speech and exported as local MP3s. Accept plays the caller without selecting an assessment answer. Decline/End stops playback; Replay restarts it. The independent callback becomes available after the decision, including guided recovery for an unsafe answer. Transcripts and native controls provide alternatives. Navigation and restart stop playback and detach handlers so old media events cannot affect another scene.
+
+Checks cover all 243 assessment paths plus call playback, end/replay, clock display, failed playback fallback, unchanged scoring from listening, callback and media cleanup.
