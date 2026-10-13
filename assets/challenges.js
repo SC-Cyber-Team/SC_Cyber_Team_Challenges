@@ -5,7 +5,7 @@ const CHALLENGES = [
     "title": "Mission briefing",
     "level": "Beginner",
     "category": "Ciphers",
-    "brief": "Learn the recipe workflow: find an operation, drag it into Recipe, paste the clue into Input and read Output. Decode the message to find the meeting point.",
+    "brief": "Use CyberChef to solve this task. Learn the recipe workflow: find an operation, drag it into Recipe, paste the clue into Input and read Output. Decode the message to find the meeting point.",
     "evidence": "Phhw ph dw wkh pdlq grruv.",
     "answers": [
       "Meet me at the main doors."
@@ -18,17 +18,19 @@ const CHALLENGES = [
     "solution": "ROT13 with Amount 23 produces “Meet me at the main doors.” Caesar ciphers obscure text but are not secure modern encryption.",
     "original": true,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "ROT13"
+    ]
   },
   {
     "id": "round1",
     "title": "The binary door",
     "level": "Beginner",
     "category": "Encoding",
-    "brief": "You are trapped in a locked room. A note tells you what to enter on the security panel. Submit the passphrase, or the complete decoded sentence.",
+    "brief": "Use CyberChef to decode the binary note on the locked room’s security panel. Submit the complete decoded sentence, including the passphrase.",
     "evidence": "01010100 01101000 01100101 00100000 01110000 01100001 01110011 01110011 01110000 01101000 01110010 01100001 01110011 01100101 00100000 01101001 01110011 00100000 00100010 01001101 01000001 01010100 01010010 01001001 01011000 00100010 00101110",
     "answers": [
-      "MATRIX",
       "The passphrase is \"MATRIX\"."
     ],
     "hints": [
@@ -39,14 +41,18 @@ const CHALLENGES = [
     "solution": "From Binary produces The passphrase is \"MATRIX\". Encoding changes representation; it does not keep a message secret.",
     "original": true,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "revision": 2,
+    "operations": [
+      "From Binary"
+    ]
   },
   {
     "id": "round2",
     "title": "The white rabbit corridor",
     "level": "Beginner",
     "category": "Encoding",
-    "brief": "Four doors are labelled itoa64, URL Safe, Radix-64 and BinHex. A note marked “base64” holds your next instruction. Decode it.",
+    "brief": "Use CyberChef to solve this task. Four doors are labelled itoa64, URL Safe, Radix-64 and BinHex. A note marked “base64” holds your next instruction. Decode it.",
     "evidence": "Rm9sbG93IHRoZSB3aGl0ZSByYWJiaXQu",
     "answers": [
       "Follow the white rabbit."
@@ -59,56 +65,65 @@ const CHALLENGES = [
     "solution": "From Base64 yields “Follow the white rabbit.” Base64 is commonly used to transport bytes as text.",
     "original": true,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "From Base64"
+    ]
   },
   {
     "id": "round3",
     "title": "The animal courtyard",
     "level": "Intermediate",
     "category": "Encryption",
-    "brief": "A courtyard is full of animals. A keyboard holds an encrypted note and the settings used to encrypt it. Decrypt the note and submit the instruction, or name the animal to follow.",
-    "evidence": "1c370c494cf2367de0d06dee51db433ccf5104fc344c0cab9c1b353b1c4c50cf",
+    "brief": "Use CyberChef to decrypt the animal courtyard note using the supplied AES settings. Submit the complete decoded note, including its access code. The earlier corridor clue alone will not open this lock.",
+    "evidence": "1c370c494cf2367de0d06dee51db433cd3d0234c4c2b0d7640c73652d389e7bb6e18fdc3f5f902e6af4482669a2aaea8319b3c898d07e2fc3caf626488d82092",
     "answers": [
-      "Follow the white rabbit.",
-      "white rabbit",
-      "rabbit"
+      "Follow the white rabbit. Access code: RABBIT-7319."
     ],
     "hints": [
       "A 64-character hexadecimal string is not necessarily a hash.",
       "Use AES Decrypt, not AES Encrypt.",
       "Set input to Hex, output to Raw, mode CBC, and use the supplied key and IV."
     ],
-    "solution": "AES-CBC decryption produces “Follow the white rabbit.” followed by a newline. The original ciphertext is retained; its image-only parameters are now readable text.",
+    "solution": "AES Decrypt with the supplied UTF8 key and Hex IV, CBC mode, Hex input and Raw output recovers the complete note and its unique access code. This adapted ciphertext keeps the original animal-courtyard puzzle but prevents repeating round 2’s answer.",
     "original": true,
     "settings": "AES key: MATRIXMATRIXMATR\nKey format: UTF8\nIV: DEADBEEFDEADBEEFDEADBEEFDEADBEEF\nIV format: Hex\nMode: CBC\nPadding: PKCS#7 (default)\nDecrypt input: Hex\nDecrypt output: Raw",
-    "points": 200
+    "points": 200,
+    "revision": 2,
+    "operations": [
+      "AES Decrypt"
+    ]
   },
   {
     "id": "round4",
     "title": "Mischief in the burrow",
     "level": "Beginner",
     "category": "Encoding",
-    "brief": "You follow the creature to its burrow. A note reads: “I’m a prankster and hacker’s delight, mischief and mayhem are my blight. Beware of my traps and tricks, I’m that code with malicious kicks.” What am I? A hexadecimal clue is available below.",
-    "evidence": "56 69 72 75 73 0a",
+    "brief": "Use CyberChef to decode the hexadecimal evidence in the burrow. The old riddle describes malicious code, but naming it is not enough: submit the complete decoded message and access code.",
+    "evidence": "56 69 72 75 73 20 69 64 65 6e 74 69 66 69 65 64 2e 20 42 75 72 72 6f 77 20 61 63 63 65 73 73 20 63 6f 64 65 3a 20 56 31 52 55 53 2d 38 30 34 32 2e",
     "answers": [
-      "Virus"
+      "Virus identified. Burrow access code: V1RUS-8042."
     ],
     "hints": [
-      "The answer is a type of malicious code.",
-      "The clue contains hexadecimal character values.",
-      "Use From Hex. Ignore the final newline."
+      "The riddle supplies context; the access code is inside the encoded evidence.",
+      "Each pair of hexadecimal digits represents a byte.",
+      "Use From Hex with a space delimiter and submit the whole output."
     ],
-    "solution": "From Hex yields “Virus”. The riddle uses “virus” broadly; technically a virus replicates by infecting other files or programs.",
+    "solution": "From Hex reveals the identification and burrow access code. This enhances the original virus riddle with an answer that must be recovered from the supplied evidence.",
     "original": true,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "revision": 2,
+    "operations": [
+      "From Hex"
+    ]
   },
   {
     "id": "round5",
     "title": "Hidden in plain sight",
     "level": "Intermediate",
     "category": "Encoding",
-    "brief": "A final note contains numbered character values. Repair the idea behind the original broken code: interpret each token in base 32, then convert its number to a character. Submit the message.",
+    "brief": "Use CyberChef to solve this task. A final note contains numbered character values. Repair the idea behind the original broken code: interpret each token in base 32, then convert its number to a character. Submit the message.",
     "evidence": "24 3f 3e 17 3k 10 3l 3j 35 10 2h 2i 10 23 3f 34 35 3j 11 0a",
     "answers": [
       "Don't use QR Codes!"
@@ -121,14 +136,17 @@ const CHALLENGES = [
     "solution": "From Charcode with Delimiter Space and Base 32 converts each token directly to a character. 24 → 68 → D, 3f → 111 → o. The message is “Don't use QR Codes!” This is a historical puzzle slogan; QR codes themselves are not inherently unsafe. Inspect their destinations and verify unexpected requests.",
     "original": true,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "operations": [
+      "From Charcode"
+    ]
   },
   {
     "id": "hex-helpdesk",
     "title": "Helpdesk intercept",
     "level": "Beginner",
     "category": "Encoding",
-    "brief": "A console alert contains an encoded greeting. Recover it.",
+    "brief": "Use CyberChef to solve this task. A console alert contains an encoded greeting. Recover it.",
     "evidence": "48656c6c6f20536f6d657273657421",
     "answers": [
       "Hello Somerset!"
@@ -141,14 +159,17 @@ const CHALLENGES = [
     "solution": "From Hex gives “Hello Somerset!” This preserves the repository’s existing Somerset puzzle.",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "From Hex"
+    ]
   },
   {
     "id": "rot13",
     "title": "The rotated locker",
     "level": "Beginner",
     "category": "Ciphers",
-    "brief": "The locker label has been rotated. Find its instruction.",
+    "brief": "Use CyberChef to solve this task. The locker label has been rotated. Find its instruction.",
     "evidence": "Bcra gur oyhr ybpxre.",
     "answers": [
       "Open the blue locker."
@@ -161,14 +182,17 @@ const CHALLENGES = [
     "solution": "ROT13 applied twice returns the original text. This is obfuscation, not secure encryption.",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "ROT13"
+    ]
   },
   {
     "id": "reverse",
     "title": "Mirror message",
     "level": "Beginner",
     "category": "Encoding",
-    "brief": "A mirror beside a terminal gives you a clue. Recover the message.",
+    "brief": "Use CyberChef to solve this task. A mirror beside a terminal gives you a clue. Recover the message.",
     "evidence": ".rotinom eht dniheb kcehC",
     "answers": [
       "Check behind the monitor."
@@ -181,14 +205,17 @@ const CHALLENGES = [
     "solution": "Reverse restores “Check behind the monitor.”",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "Reverse"
+    ]
   },
   {
     "id": "url",
     "title": "The escaped link",
     "level": "Beginner",
     "category": "Web",
-    "brief": "Recover the destination text. You only need to decode it; no link needs to be visited.",
+    "brief": "Use CyberChef to solve this task. Recover the destination text. You only need to decode it; no link needs to be visited.",
     "evidence": "https%3A%2F%2Ftraining.example%2Fvault%3Fcode%3D7429",
     "answers": [
       "https://training.example/vault?code=7429"
@@ -201,14 +228,17 @@ const CHALLENGES = [
     "solution": "URL Decode restores the URL. training.example is fictional training evidence. Encoding alone says nothing about whether a URL is safe.",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "URL Decode"
+    ]
   },
   {
     "id": "morse",
     "title": "Radio room",
     "level": "Beginner",
     "category": "Encoding",
-    "brief": "A radio operator left this signal. Decode the two-word instruction.",
+    "brief": "Use CyberChef to solve this task. A radio operator left this signal. Decode the two-word instruction.",
     "evidence": "--- .--. . -. / ... . ... .- -- .",
     "answers": [
       "OPEN SESAME"
@@ -221,14 +251,17 @@ const CHALLENGES = [
     "solution": "From Morse Code yields OPEN SESAME.",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "From Morse Code"
+    ]
   },
   {
     "id": "decimal",
     "title": "Numbered keypad",
     "level": "Beginner",
     "category": "Encoding",
-    "brief": "A label contains decimal character codes. Recover the access phrase.",
+    "brief": "Use CyberChef to solve this task. A label contains decimal character codes. Recover the access phrase.",
     "evidence": "65 67 67 69 83 83 32 71 82 65 78 84 69 68",
     "answers": [
       "ACCESS GRANTED"
@@ -241,56 +274,66 @@ const CHALLENGES = [
     "solution": "From Charcode maps decimal values to “ACCESS GRANTED”.",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "From Charcode"
+    ]
   },
   {
     "id": "sha256",
     "title": "Fingerprint check",
     "level": "Intermediate",
     "category": "Hashes",
-    "brief": "Three animal labels are rabbit, fox and owl. Hash each lowercase label using SHA2 with size 256 and identify the match. Do not add a newline.",
+    "brief": "Use CyberChef to identify which lowercase label (rabbit, fox or owl) matches the supplied SHA-256 digest. Then hash that label followed immediately by :vault-73. Submit the NEW full SHA-256 digest, not the animal name or the digest already shown. Do not add a newline.",
     "evidence": "d37d96b42ad43384915e4513505c30c0b1c4e7c765b5577eda25b5dbd7f26d89",
     "answers": [
-      "rabbit"
+      "c2618014635a7d8c94d6df51cfa8d0bfa33f637618ffeba927f8e66aff6a392d"
     ],
     "hints": [
-      "Hashes are compared, not decrypted.",
-      "Use each of the three candidates as Input.",
-      "Use SHA2, size 256, and match the complete digest."
+      "Use SHA2 with size 256 on each lowercase candidate.",
+      "Once a candidate matches, append the exact suffix :vault-73 to that candidate as a new input.",
+      "Hash the new input with SHA2, size 256. Submit all 64 hexadecimal characters."
     ],
-    "solution": "SHA-256 of the lowercase UTF-8 text rabbit matches. Length alone does not prove an algorithm. This replaces the repository’s ambiguous hash-identification question with a verifiable comparison.",
+    "solution": "SHA2 (256) identifies rabbit as the matching candidate. A second SHA2 (256) operation on rabbit:vault-73 produces c2618014635a7d8c94d6df51cfa8d0bfa33f637618ffeba927f8e66aff6a392d. The second digest demonstrates the transformation; guessing an animal name is not an accepted answer.",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "revision": 2,
+    "operations": [
+      "SHA2"
+    ]
   },
   {
     "id": "quishing",
     "title": "The QR upgrade",
     "level": "Beginner",
-    "category": "Awareness",
-    "brief": "An email says “Mandatory security upgrade: scan this QR code on your phone and enter your work password.” What is phishing using QR codes commonly called?",
-    "evidence": "URGENT: Scan to keep your account active.",
+    "category": "Web",
+    "brief": "Use CyberChef to inspect an encoded destination recovered from a suspicious “mandatory security upgrade” QR email. Remove its two transport encodings and submit the complete decoded URL, including the ticket. Work with the supplied text; do not visit the destination.",
+    "evidence": "aHR0cHMlM0ElMkYlMkZzZWN1cml0eS11cGdyYWRlLmV4YW1wbGUlMkZ2ZXJpZnklM0Z0aWNrZXQlM0RRUi02Mjg0",
     "answers": [
-      "quishing",
-      "QR phishing",
-      "QR code phishing"
+      "https://security-upgrade.example/verify?ticket=QR-6284"
     ],
     "hints": [
-      "Moving to a phone does not make the request trustworthy.",
-      "Combine QR codes with phishing.",
-      "The common term starts with qui."
+      "The outer layer is Base64; decoding it will expose percent escapes.",
+      "A percent sign followed by two hexadecimal digits indicates URL encoding.",
+      "Use From Base64 → URL Decode. Submit the full URL, including its ticket."
     ],
-    "solution": "Quishing is phishing using QR codes. Verify requests through a known channel and inspect the destination before opening. This retains the repository’s QR-awareness question.",
+    "solution": "From Base64 → URL Decode recovers https://security-upgrade.example/verify?ticket=QR-6284. This retains the quishing scenario while making the task a CyberChef decoding exercise. An urgent QR request still needs independent verification; the example destination is synthetic.",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "revision": 2,
+    "operations": [
+      "From Base64",
+      "URL Decode"
+    ]
   },
   {
     "id": "double-base64",
     "title": "Two envelopes",
     "level": "Intermediate",
     "category": "Encoding",
-    "brief": "The note has been wrapped twice. Recover the instruction.",
+    "brief": "Use CyberChef to solve this task. The note has been wrapped twice. Recover the instruction.",
     "evidence": "VEc5dmF5QjFibVJsY2lCMGFHVWdaR1Z6YXk0PQ==",
     "answers": [
       "Look under the desk."
@@ -303,14 +346,17 @@ const CHALLENGES = [
     "solution": "Two From Base64 operations reveal “Look under the desk.”",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "operations": [
+      "From Base64"
+    ]
   },
   {
     "id": "hex-base64",
     "title": "Nested parcel",
     "level": "Intermediate",
     "category": "Encoding",
-    "brief": "A parcel has a hexadecimal outer wrapping and another text encoding inside.",
+    "brief": "Use CyberChef to solve this task. A parcel has a hexadecimal outer wrapping and another text encoding inside.",
     "evidence": "5647686c4947746c65534270637942706269426b636d46335a5849674e43343d",
     "answers": [
       "The key is in drawer 4."
@@ -323,14 +369,18 @@ const CHALLENGES = [
     "solution": "From Hex → From Base64 gives “The key is in drawer 4.” Recipe order matters.",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "operations": [
+      "From Hex",
+      "From Base64"
+    ]
   },
   {
     "id": "base64-rot",
     "title": "Shifted dispatch",
     "level": "Intermediate",
     "category": "Ciphers",
-    "brief": "Decode the transport envelope, then undo a 13-letter rotation.",
+    "brief": "Use CyberChef to solve this task. Decode the transport envelope, then undo a 13-letter rotation.",
     "evidence": "WnJyZyBuZyBndXIgYWJlZ3UgdG5nci4=",
     "answers": [
       "Meet at the north gate."
@@ -343,14 +393,18 @@ const CHALLENGES = [
     "solution": "From Base64 → ROT13 recovers “Meet at the north gate.”",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "operations": [
+      "From Base64",
+      "ROT13"
+    ]
   },
   {
     "id": "html",
     "title": "Webpage fragment",
     "level": "Beginner",
     "category": "Web",
-    "brief": "A page has escaped its message for HTML. Recover the readable text.",
+    "brief": "Use CyberChef to solve this task. A page has escaped its message for HTML. Recover the readable text.",
     "evidence": "The safe word is &#83;&#65;&#70;&#69; &amp; SOUND.",
     "answers": [
       "The safe word is SAFE & SOUND."
@@ -363,14 +417,17 @@ const CHALLENGES = [
     "solution": "From HTML Entity produces “The safe word is SAFE & SOUND.”",
     "original": false,
     "settings": "",
-    "points": 100
+    "points": 100,
+    "operations": [
+      "From HTML Entity"
+    ]
   },
   {
     "id": "base32",
     "title": "Archive label",
     "level": "Intermediate",
     "category": "Encoding",
-    "brief": "Decode this standard Base32 archive label. Unlike the final original room, this is a complete encoded byte stream.",
+    "brief": "Use CyberChef to solve this task. Decode this standard Base32 archive label. Unlike the final original room, this is a complete encoded byte stream.",
     "evidence": "IFJEGSCJKZCSAU2FKZCU4===",
     "answers": [
       "ARCHIVE SEVEN"
@@ -383,14 +440,17 @@ const CHALLENGES = [
     "solution": "From Base32 gives ARCHIVE SEVEN. Base32 encoding differs from interpreting individual numbers in radix 32.",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "operations": [
+      "From Base32"
+    ]
   },
   {
     "id": "xor",
     "title": "One-byte lock",
     "level": "Advanced",
     "category": "Encryption",
-    "brief": "Recover this toy encrypted note. The single-byte key is 2a in hexadecimal. Output the plaintext.",
+    "brief": "Use CyberChef to solve this task. Recover this toy encrypted note. The single-byte key is 2a in hexadecimal. Output the plaintext.",
     "evidence": "6c666b6d5165646f7568737e6f75616f7357",
     "answers": [
       "FLAG{ONE_BYTE_KEY}"
@@ -403,14 +463,18 @@ const CHALLENGES = [
     "solution": "From Hex → XOR with key 2a reveals FLAG{ONE_BYTE_KEY}. Repeating a one-byte XOR key is not secure encryption.",
     "original": false,
     "settings": "",
-    "points": 300
+    "points": 300,
+    "operations": [
+      "From Hex",
+      "XOR"
+    ]
   },
   {
     "id": "gzip",
     "title": "Compressed evidence",
     "level": "Advanced",
     "category": "Encoding",
-    "brief": "An evidence export was compressed before being encoded for transport. Restore its text.",
+    "brief": "Use CyberChef to solve this task. An evidence export was compressed before being encoded for transport. Restore its text.",
     "evidence": "H4sIAAAAAAACA3PzcXSvDvULcHT2jg/xcI13DfN0cfVzdq0FAD2wPIAZAAAA",
     "answers": [
       "FLAG{UNPACK_THE_EVIDENCE}"
@@ -423,34 +487,43 @@ const CHALLENGES = [
     "solution": "From Base64 → Gunzip reveals FLAG{UNPACK_THE_EVIDENCE}. Compression is not encryption.",
     "original": false,
     "settings": "",
-    "points": 300
+    "points": 300,
+    "operations": [
+      "From Base64",
+      "Gunzip"
+    ]
   },
   {
     "id": "logs",
     "title": "SOC triage",
     "level": "Intermediate",
     "category": "Investigation",
-    "brief": "The alert threshold is three failed logins followed by success for the same account and source. Which IP meets that threshold?",
-    "evidence": "09:00 user=alex src=192.0.2.10 outcome=FAIL\n09:01 user=alex src=192.0.2.10 outcome=FAIL\n09:02 user=alex src=192.0.2.10 outcome=FAIL\n09:03 user=alex src=192.0.2.10 outcome=SUCCESS\n09:04 user=pat src=192.0.2.20 outcome=SUCCESS",
+    "brief": "Use CyberChef to unpack an encoded SOC log export: its outer layer is Base64, its inner layer is hexadecimal text. Find the account/source with three failed logins followed by success. Submit the SESSION identifier from that successful event, not the IP address.",
+    "evidence": "MzAzOTNhMzAzMDIwNzU3MzY1NzIzZDYxNmM2NTc4MjA3MzcyNjMzZDMxMzkzMjJlMzAyZTMyMmUzMTM0MzcyMDZmNzU3NDYzNmY2ZDY1M2Q0NjQxNDk0YzBhMzAzOTNhMzAzMTIwNzU3MzY1NzIzZDYxNmM2NTc4MjA3MzcyNjMzZDMxMzkzMjJlMzAyZTMyMmUzMTM0MzcyMDZmNzU3NDYzNmY2ZDY1M2Q0NjQxNDk0YzBhMzAzOTNhMzAzMjIwNzU3MzY1NzIzZDYxNmM2NTc4MjA3MzcyNjMzZDMxMzkzMjJlMzAyZTMyMmUzMTM0MzcyMDZmNzU3NDYzNmY2ZDY1M2Q0NjQxNDk0YzBhMzAzOTNhMzAzMzIwNzU3MzY1NzIzZDYxNmM2NTc4MjA3MzcyNjMzZDMxMzkzMjJlMzAyZTMyMmUzMTM0MzcyMDZmNzU3NDYzNmY2ZDY1M2Q1MzU1NDM0MzQ1NTM1MzIwNzM2NTczNzM2OTZmNmUzZDUzNGY0MzJkMzkzNDM3MzIwYTMwMzkzYTMwMzQyMDc1NzM2NTcyM2Q3MDYxNzQyMDczNzI2MzNkMzEzOTMyMmUzMDJlMzIyZTMyMzAyMDZmNzU3NDYzNmY2ZDY1M2Q1MzU1NDM0MzQ1NTM1MzIwNzM2NTczNzM2OTZmNmUzZDUzNGY0MzJkMzIzMTM1Mzg=",
     "answers": [
-      "192.0.2.10"
+      "SOC-9472"
     ],
     "hints": [
-      "Group by user and source address.",
-      "Count failures before the successful login.",
-      "alex has three failures, then a success from the same IP."
+      "Decode the transport envelope using From Base64. The output is still hexadecimal text.",
+      "Apply From Hex next, then inspect the reconstructed event sequence.",
+      "Find three FAIL events for one account/source, followed by SUCCESS. Submit that row’s session value."
     ],
-    "solution": "192.0.2.10 meets the stated rule. This is a signal for investigation, not proof of compromise. The addresses are documentation-only examples.",
+    "solution": "From Base64 → From Hex restores the logs. alex at 192.0.2.147 has three failures followed by success with session SOC-9472. Decoding is required before triage. This pattern warrants investigation; it is not proof of compromise.",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "revision": 2,
+    "operations": [
+      "From Base64",
+      "From Hex"
+    ]
   },
   {
     "id": "timestamp",
     "title": "Timeline repair",
     "level": "Intermediate",
     "category": "Investigation",
-    "brief": "Convert this Unix timestamp in seconds to UTC. Submit the date as YYYY-MM-DD.",
+    "brief": "Use CyberChef to solve this task. Convert this Unix timestamp in seconds to UTC. Submit the date as YYYY-MM-DD.",
     "evidence": "1704067200",
     "answers": [
       "2024-01-01"
@@ -463,34 +536,42 @@ const CHALLENGES = [
     "solution": "1704067200 is 2024-01-01 00:00:00 UTC. Timezone and unit errors can distort incident timelines.",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "operations": [
+      "From UNIX Timestamp"
+    ]
   },
   {
     "id": "ioc",
     "title": "Defanged indicator",
     "level": "Intermediate",
     "category": "Web",
-    "brief": "An analyst deliberately made this URL non-clickable. Restore its original form as text. Do not browse to it.",
-    "evidence": "hxxps://portal[.]example/login",
+    "brief": "Use CyberChef to decode and restore an encoded, defanged indicator. Submit the complete restored URL, including the case reference. Analyse the text only; do not browse to it.",
+    "evidence": "aHh4cHM6Ly9wb3J0YWxbLl1leGFtcGxlL2xvZ2luP2Nhc2U9SU9DLTU4MzE=",
     "answers": [
-      "https://portal.example/login"
+      "https://portal.example/login?case=IOC-5831"
     ],
     "hints": [
-      "hxxps and [.] are deliberate substitutions.",
-      "Restore the protocol and dots.",
-      "Replace hxxps with https and [.] with a period."
+      "The transport layer is Base64. Decode it before restoring the URL.",
+      "The decoded hxxps and [.] are intentional defanging substitutions.",
+      "Use From Base64 → Fang URL. Submit the full restored URL, including the case reference."
     ],
-    "solution": "The restored text is https://portal.example/login. Defanging reduces accidental clicks; it does not establish whether an indicator is malicious.",
+    "solution": "From Base64 → Fang URL produces https://portal.example/login?case=IOC-5831. Defanging reduces accidental clicks. Restoring a URL is an analysis step, not an instruction to visit it.",
     "original": false,
     "settings": "",
-    "points": 200
+    "points": 200,
+    "revision": 2,
+    "operations": [
+      "From Base64",
+      "Fang URL"
+    ]
   },
   {
     "id": "final-recipe",
     "title": "The evidence vault",
     "level": "Advanced",
     "category": "Encoding",
-    "brief": "The final vault combines three layers. The outer layer is Base64, the middle is hexadecimal text, and the inner message has a 13-letter rotation. Recover the flag.",
+    "brief": "Use CyberChef to solve this task. The final vault combines three layers. The outer layer is Base64, the middle is hexadecimal text, and the inner message has a 13-letter rotation. Recover the flag.",
     "evidence": "NTM1OTRlNTQ3YjUwNGM0ZjUyNDU1MDU1NTI1MzVmNTI0NjUwNGU0MzUyNWY1YTRlNDY0NzUyNDU3ZA==",
     "answers": [
       "FLAG{CYBERCHEF_ESCAPE_MASTER}"
@@ -503,6 +584,11 @@ const CHALLENGES = [
     "solution": "The full recipe reveals FLAG{CYBERCHEF_ESCAPE_MASTER}. Keep a record of each transformation so someone else can reproduce your result.",
     "original": false,
     "settings": "",
-    "points": 300
+    "points": 300,
+    "operations": [
+      "From Base64",
+      "From Hex",
+      "ROT13"
+    ]
   }
 ];

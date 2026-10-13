@@ -1,3 +1,15 @@
+# CyberChef-only revision — 13 October 2026
+
+This revision supersedes the task descriptions in the historical audit below.
+
+All 25 briefs explicitly instruct the learner to use CyberChef, and every record declares its operations. The QR task is now Base64 → URL Decode; SOC triage requires Base64 → From Hex; indicator restoration requires Base64 → Fang URL. The AES and virus-riddle tasks now include unique decoded access codes; binary requires the full decoded sentence. Hash comparison requires a second, newly calculated SHA-256 digest rather than a guessable animal name.
+
+The six revised evidence/answer workflows were verified against the official hosted CyberChef tool. Independent evidence checks, all 25 app answer flows, rejection of old shortcut answers, unchanged total of 4,100 points, and revision-aware progress migration pass. The earlier audit remains below as a dated record, not a claim that its old evidence is still current.
+
+Research sources and possible future lessons are listed in README.md. No copied malware samples or external target activity is required. The answer checker cannot establish which external application a learner used; task design now consistently requires evidence processing, but strict recipe execution is a separate server-side feature.
+
+---
+
 # Challenge Lab audit — 12 October 2026
 
 ## Outcome

@@ -1,9 +1,9 @@
 'use strict';
 const KEY = 'sc-cyber-challenges-v1';
 const normalize = value => value.normalize('NFKC').toLowerCase().trim().replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').replace(/[.!?]+$/,'');
-function readProgress(){try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');return {solved:Array.isArray(v.solved)?[...new Set(v.solved.filter(id=>CHALLENGES.some(c=>c.id===id)))]:[]};}catch{return {solved:[]};}}
+function readProgress(){try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');const revisions=v.revisions&&typeof v.revisions==='object'?v.revisions:{};return {solved:Array.isArray(v.solved)?[...new Set(v.solved.filter(id=>CHALLENGES.some(c=>c.id===id&&((c.revision||1)===1||revisions[id]===c.revision))))]:[],revisions};}catch{return {solved:[],revisions:{}};}}
 let progress=readProgress();
-function save(){try{localStorage.setItem(KEY,JSON.stringify(progress));return true;}catch{return false;}}
+function save(){progress.revisions=Object.fromEntries(CHALLENGES.filter(c=>progress.solved.includes(c.id)).map(c=>[c.id,c.revision||1]));try{localStorage.setItem(KEY,JSON.stringify(progress));return true;}catch{return false;}}
 const $=id=>document.getElementById(id);
 function el(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
 function link(text,href,className){const n=el('a',text,className);n.href=href;return n;}

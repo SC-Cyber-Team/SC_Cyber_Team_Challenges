@@ -15,8 +15,9 @@ class Tests(unittest.TestCase):
  def test_catalogue(self):
   self.assertEqual(len(DATA),25);self.assertEqual(len(C),25)
   self.assertEqual(sum(c['original'] for c in DATA),6)
+  self.assertEqual(sum(c['points'] for c in DATA),4100)
   for c in DATA:
-   self.assertEqual(len(c['hints']),3);self.assertTrue(c['answers']);self.assertTrue(c['solution'])
+   self.assertEqual(len(c['hints']),3);self.assertTrue(c['answers']);self.assertTrue(c['solution']);self.assertTrue(c['operations']);self.assertIn('Use CyberChef',c['brief'])
  def test_evidence(self):
   self.check('getting-ready',''.join(chr((ord(x)-ord('A')-3)%26+ord('A')) if x.isupper() else chr((ord(x)-ord('a')-3)%26+ord('a')) if x.islower() else x for x in evidence('getting-ready')))
   self.check('round1',''.join(chr(int(x,2)) for x in evidence('round1').split()))
@@ -30,7 +31,8 @@ class Tests(unittest.TestCase):
   morse={'---':'O','.--.':'P','.':'E','-.':'N','...':'S','.-':'A','--':'M'}
   self.check('morse',' '.join(''.join(morse[x] for x in w.split()) for w in evidence('morse').split('/')))
   self.check('decimal',''.join(chr(int(x)) for x in evidence('decimal').split()))
-  self.check('sha256',next(x for x in ['rabbit','fox','owl'] if hashlib.sha256(x.encode()).hexdigest()==evidence('sha256')))
+  candidate=next(x for x in ['rabbit','fox','owl'] if hashlib.sha256(x.encode()).hexdigest()==evidence('sha256'))
+  self.check('sha256',hashlib.sha256((candidate+':vault-73').encode()).hexdigest())
   self.check('double-base64',base64.b64decode(base64.b64decode(evidence('double-base64'))).decode())
   self.check('hex-base64',base64.b64decode(bytes.fromhex(evidence('hex-base64'))).decode())
   self.check('base64-rot',codecs.decode(base64.b64decode(evidence('base64-rot')).decode(),'rot13'))
@@ -39,7 +41,8 @@ class Tests(unittest.TestCase):
   self.check('xor',bytes(x^0x2a for x in bytes.fromhex(evidence('xor'))).decode())
   self.check('gzip',gzip.decompress(base64.b64decode(evidence('gzip'))).decode())
   self.check('timestamp',datetime.fromtimestamp(int(evidence('timestamp')),timezone.utc).strftime('%Y-%m-%d'))
-  self.check('ioc',evidence('ioc').replace('hxxps','https').replace('[.]','.'))
+  self.check('ioc',base64.b64decode(evidence('ioc')).decode().replace('hxxps','https').replace('[.]','.'))
+  self.check('quishing',unquote(base64.b64decode(evidence('quishing')).decode()))
   self.check('final-recipe',codecs.decode(bytes.fromhex(base64.b64decode(evidence('final-recipe')).decode()).decode(),'rot13'))
  def test_aes(self):
   try:from cryptography.hazmat.primitives.ciphers import Cipher,algorithms,modes
@@ -50,11 +53,15 @@ class Tests(unittest.TestCase):
   u=PKCS7(128).unpadder();self.check('round3',(u.update(padded)+u.finalize()).decode())
  def test_log_rule(self):
   failures={};matches=[]
-  for row in evidence('logs').splitlines():
-   _,user,src,outcome=row.split();key=(user,src)
+  decoded=bytes.fromhex(base64.b64decode(evidence('logs')).decode()).decode()
+  for row in decoded.splitlines():
+   fields=row.split();_,user,src,outcome=fields[:4];key=(user,src)
    if outcome=='outcome=FAIL':failures[key]=failures.get(key,0)+1
-   elif failures.get(key,0)>=3:matches.append(src.split('=')[1])
+   elif failures.get(key,0)>=3:matches.append(fields[4].split('=')[1])
   self.assertEqual(matches,C['logs']['answers'])
+ def test_no_shortcut_answers(self):
+  for id,shortcut in [('round1','MATRIX'),('round3','rabbit'),('round3','Follow the white rabbit.'),('round4','Virus'),('quishing','quishing'),('logs','192.0.2.147'),('sha256','rabbit')]:
+   self.assertNotIn(norm(shortcut),[norm(a) for a in C[id]['answers']],id)
  def test_recipe_hints(self):
   self.assertIn('From Charcode',C['round5']['hints'][2])
   self.assertIn('Base to 32',C['round5']['hints'][2])
