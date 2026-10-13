@@ -12,6 +12,19 @@ A responsive, browser-based CyberChef training site with **35 challenges**: the 
 - Keyboard navigation, visible focus, labelled inputs, responsive layout and reduced-motion support.
 - Existing `getting-ready.html`, `round1.html` through `round5.html`, `challenge1.html` and `final-room.html` URLs continue working.
 
+## Workplace simulations
+
+The homepage also links to four independent browser-local training experiences:
+
+- `scam-quiz.html`: 14 phishing, smishing and quishing scenarios.
+- `workday.html`: five connected workplace decisions about an invoice and support request.
+- `outsmart-the-hacker.html`: five decisions about unexpected MFA prompts, caller impersonation and a compromised Teams account.
+- `cyber-investigations.html`: Spot the Imposter and The Human Firewall, with six cases per track and four evidence checks per case.
+
+These use fictional contacts and simulated Outlook, Teams, phone, consent and sharing interfaces. Decisions and scores remain in memory for the current visit. They make no remote reports, calls, payments, sign-ins or clipboard changes. The director impersonation case currently uses text and a call-screen recreation, without generated voice or video.
+
+Run `node tests/quiz-interactions.cjs`, `node tests/workday-interactions.cjs` and `node tests/investigations-interactions.cjs` from the repository root to check these flows. The investigation tests cover all 128 answer combinations across both tracks.
+
 ## GitHub Pages
 
 In the repository's **Settings → Pages**, choose **Deploy from a branch**, then **main** and **/ (root)**. All site files are static and use relative links, including under a repository subpath. No workflow or dependencies are required. If Pages is already configured, retain the existing configuration.
