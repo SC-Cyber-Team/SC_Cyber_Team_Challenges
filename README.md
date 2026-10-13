@@ -17,6 +17,7 @@ A responsive, browser-based CyberChef training site with **35 challenges**: the 
 The homepage also links to five independent browser-local training experiences:
 
 - `scam-quiz.html`: 14 phishing, smishing and quishing scenarios.
+- `meeting-room-wifi.html`: four connected quishing decisions, 12 evidence checks, an original meeting-room scene, a scannable safe training QR, read-only mobile previews and independent guest-service verification.
 - `workday.html`: five connected workplace decisions about an invoice and support request.
 - `outsmart-the-hacker.html`: five decisions about unexpected MFA prompts, caller impersonation and a compromised Teams account.
 - `the-executive-call.html`: five connected decisions with an officially embedded lip-synced synthetic Teams briefing, a transcript, an audio-only alternative, directory checks and a payment workflow.
@@ -88,3 +89,5 @@ The six original exercises come from [CyberChef Challenge](https://sites.google.
 [CyberChef](https://github.com/gchq/CyberChef) is provided by GCHQ under its own licence; this site links to the official hosted tool rather than copying it.
 
 This is a learning activity. Static-site answers and progress are inspectable and editable by a participant; local points are not suitable for a trusted competitive leaderboard. No real malware, credential harvesting or live targets are included.
+
+Run `node tests/wifi-interactions.cjs` for the Wi-Fi notice assessment and inspection checks.

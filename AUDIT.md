@@ -154,3 +154,11 @@ The full 21.6-second fictional executive video was verified playing to completio
 Outsmart the Hacker now includes an 11-second fictional caller and a 19-second independently verified helpdesk callback, generated through HeyGen speech and exported as local MP3s. Accept plays the caller without selecting an assessment answer. Decline/End stops playback; Replay restarts it. The independent callback becomes available after the decision, including guided recovery for an unsafe answer. Transcripts and native controls provide alternatives. Navigation and restart stop playback and detach handlers so old media events cannot affect another scene.
 
 Checks cover all 243 assessment paths plus call playback, end/replay, clock display, failed playback fallback, unchanged scoring from listening, callback and media cleanup.
+
+## Meeting-room quishing case — 13 October 2026
+
+Added an original four-decision Wi-Fi notice case with 12 evidence checks. A realistic room background was generated, while the readable notice and exact QR were built separately. The actual QR targets meeting-room-wifi.html#scan on this site; the displayed .example hostname belongs only to the fictional story. The deep link opens the camera-link preview at decision one without submitting an answer. All sign-in and guest-code screens are read-only. There are no real forms, credential fields, camera permissions, network changes, outgoing reports or remote score storage.
+
+The case contrasts an unverified notice, lookalike Microsoft sign-in and independently verified guest portal. Correct answers are distributed across positions B, C, A and B. Guidance avoids claiming that QR scanning alone compromises a device, that all QR codes are unsafe, or that HTTPS authenticates the company. The scenario’s guest-code policy is fictional and explicitly supplied; real organisations may use other methods.
+
+Research: https://www.ncsc.gov.uk/blog-post/qr-codes-whats-real-risk and https://learn.microsoft.com/en-gb/defender-endpoint/malware/phishing-trends . Automated checks cover all 81 answer paths, duplicate/gated answers, all evidence checks, the scan deep link, read-only previews, independent Reception verification, the legitimate guest flow, debrief and restart.

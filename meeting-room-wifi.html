@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Inspect a meeting-room Wi-Fi notice, its QR destination and a simulated mobile sign-in. An original quishing investigation.">
+  <title>The Wi-Fi Notice | Cyber Team Challenges</title>
+  <link rel="stylesheet" href="assets/wifi/wifi.css?v=1">
+  <script defer src="assets/wifi/wifi.js?v=1"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the investigation</a>
+  <header><div class="wrap nav-wrap"><a class="brand" href="index.html"><span class="mark">&gt;_</span> SC CYBER TEAM</a><nav aria-label="Main navigation"><a href="index.html#workplace">Challenge hub</a><a href="scam-quiz.html">Spot the scam</a></nav><span class="training-pill">Training simulation</span></div></header>
+  <main id="main" class="wrap">
+    <section id="intro">
+      <div class="eyebrow">Look closer · A connected quishing investigation</div>
+      <h1>The Wi-Fi<br><span>notice.</span></h1>
+      <p class="lead">The room is familiar. The Wi-Fi sign looks helpful.<br>Where does the QR code actually take you?</p>
+      <div class="facts"><span>4 decisions · About 5 minutes</span><span>No timer · No sign-up</span><span>Your score stays in this visit</span></div>
+      <button class="primary" id="start">Inspect the notice →</button>
+      <div class="intro-scene" aria-hidden="true"><img src="assets/wifi/meeting-room.webp" alt="" width="1672" height="941"><div class="scene-caption">Alder meeting room · Northbridge</div></div>
+      <details class="about"><summary>About the training QR code</summary><p>Every company, account and destination in the story is fictional. The real QR code opens this site's training preview. It does not connect you to Wi-Fi or open a phishing site. The mobile screens are read-only; no passwords or personal details are requested, recorded or submitted.</p></details>
+    </section>
+    <section id="investigation" hidden>
+      <div class="case-top"><p class="eyebrow" id="counter"></p><button class="text-button" id="restart">Restart investigation</button></div>
+      <progress id="progress" max="4" value="0" aria-label="Decisions completed"></progress>
+      <p class="context" id="context"></p>
+      <div class="case-grid">
+        <div class="visual-column"><div id="scene" aria-label="Simulated workplace evidence"></div><p class="simulation-caption">Fictional training scene · Controls stay on this page</p></div>
+        <article class="decision"><div class="eyebrow">Your next move</div><h2 id="title" tabindex="-1"></h2><p id="question"></p><div id="choices" class="choices"></div><div id="feedback" aria-live="polite"></div><button class="primary" id="next" hidden>Continue investigation →</button></article>
+      </div>
+      <section class="inspection" aria-labelledby="inspection-title"><div><div class="eyebrow">Look beyond the appearance</div><h2 id="inspection-title">Inspect the evidence</h2><p class="muted">You can check these before deciding.</p></div><div class="checks" id="checks"></div><div class="reading" id="reading" aria-live="polite">Choose an evidence check to inspect it.</div></section>
+    </section>
+    <section id="result" hidden></section>
+    <noscript><p>This investigation needs JavaScript. You can still explore the <a href="posters.html">poster collection</a>.</p></noscript>
+  </main>
+  <footer class="wrap">Think · Question · Verify · No real sign-in, Wi-Fi connection or outgoing report is performed.</footer>
+</body>
+</html>
