@@ -162,3 +162,9 @@ Added an original four-decision Wi-Fi notice case with 12 evidence checks. A rea
 The case contrasts an unverified notice, lookalike Microsoft sign-in and independently verified guest portal. Correct answers are distributed across positions B, C, A and B. Guidance avoids claiming that QR scanning alone compromises a device, that all QR codes are unsafe, or that HTTPS authenticates the company. The scenario’s guest-code policy is fictional and explicitly supplied; real organisations may use other methods.
 
 Research: https://www.ncsc.gov.uk/blog-post/qr-codes-whats-real-risk and https://learn.microsoft.com/en-gb/defender-endpoint/malware/phishing-trends . Automated checks cover all 81 answer paths, duplicate/gated answers, all evidence checks, the scan deep link, read-only previews, independent Reception verification, the legitimate guest flow, debrief and restart.
+
+## Learning journey — 13 October 2026
+
+Added completion-only device-local progress for all seven workplace activities. Scores and answers remain temporary; no new analytics or remote reporting is introduced. The homepage shows participation, a suggested next challenge and reset/undo controls. Completing a simulation provides a next-activity link; replay hides the previous completion receipt while retaining the device-local completion flag. Content revision checks reject obsolete or unknown records. Both investigation tracks count separately.
+
+Added skip-navigation links to Outsmart, Executive Call and Cyber Investigations. Existing scenario headings retain programmatic focus on scene changes. All assessment and CyberChef regression suites pass alongside new persistence tests for reload, reset/undo, corrupt/blocked/quota storage, cross-tab updates and separation from CyberChef progress. A browser viewport fixture supports actual narrow-layout inspection; this is a width test, not a claim to emulate every mobile device or operating system.

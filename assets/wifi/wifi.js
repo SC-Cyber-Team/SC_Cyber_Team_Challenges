@@ -168,6 +168,7 @@ function wifiChoose(choice) {
 }
 
 function wifiFinish() {
+  window.CyberJourney?.complete('wifi-notice');
   const score = wifiAnswers.filter(answer => answer.good).length;
   wifiById('investigation').hidden = true;
   wifiById('result').hidden = false;
@@ -179,6 +180,7 @@ function wifiFinish() {
 }
 
 function wifiStart() {
+  window.CyberJourney?.clearReceipt();
   wifiStep = 0; wifiAnswers = []; wifiOpened = new Set();
   wifiById('intro').hidden = true;
   wifiById('result').hidden = true;

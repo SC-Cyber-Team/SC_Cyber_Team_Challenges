@@ -1,0 +1,25 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('assets/journey.js','utf8'),key='cyber-team-workplace-progress-v1';
+function boot(storage=new Map(),blocked=false,writeBlocked=false){
+ const nodes=new Map(),listeners={};
+ class Element{constructor(){this.children=[];this.attributes={};this.dataset={};this.hidden=false;}set id(id){this._id=id;nodes.set(id,this)}get id(){return this._id}append(...items){this.children.push(...items)}replaceChildren(...items){this.children=items}setAttribute(k,v){this.attributes[k]=v}querySelector(){return this.children.find(c=>c.className==='journey-badge')||null}}
+ for(const id of ['journey-count','journey-progress','journey-next','journey-reason','journey-storage','journey-reset','journey-undo','journey-reset-status']){const n=new Element();n.id=id}
+ const main=new Element(),cards=['spot-scam','wifi-notice','outsmart','workday','imposter','firewall','executive'].map(id=>{const el=new Element();el.dataset.journey=id;return el});
+ const get=id=>nodes.get(id)||null;
+ const context=vm.createContext({document:{getElementById:get,querySelectorAll:()=>cards,querySelector:()=>main,createElement:()=>new Element()},window:{localStorage:{getItem:k=>{if(blocked)throw Error('disabled');return storage.get(k)||null},setItem:(k,v)=>{if(blocked||writeBlocked)throw Error('quota');storage.set(k,v)}},addEventListener:(name,fn)=>listeners[name]=fn}});
+ vm.runInContext(source,context);return{api:context.window.CyberJourney,get,storage,cards,listeners,main};
+}
+const store=new Map([['cyberchef-escape-progress','keep this data']]);let b=boot(store);assert.equal(b.api.status().next.id,'spot-scam');assert.equal(b.api.status().completed.length,0);assert.equal(b.api.complete('unknown'),false);assert.equal(store.has(key),false);
+b.api.complete('wifi-notice');assert.equal(b.api.status().completed.length,1);assert.equal(b.api.status().next.id,'spot-scam');assert.equal(b.cards[1].querySelector().textContent,'✓ Completed on this device');assert.equal(b.get('journey-progress').value,1);assert.equal(b.get('journey-receipt').hidden,false);assert.ok(b.get('journey-receipt').children[0].textContent.includes('Your score is not stored'));
+b.api.clearReceipt();assert.equal(b.get('journey-receipt').hidden,true);b.api.complete('wifi-notice');assert.equal(b.api.status().completed.length,1);
+assert.equal(JSON.stringify(JSON.parse(store.get(key))),JSON.stringify({version:1,completed:{'wifi-notice':1}}));b=boot(store);assert.equal(b.api.status().completed[0],'wifi-notice');b.get('journey-reset').onclick();assert.equal(b.api.status().completed.length,0);assert.equal(b.get('journey-undo').hidden,false);assert.equal(store.get('cyberchef-escape-progress'),'keep this data');b.get('journey-undo').onclick();assert.equal(b.api.status().completed[0],'wifi-notice');assert.equal(b.get('journey-undo').hidden,true);
+for(const id of ['spot-scam','outsmart','workday','imposter','firewall','executive'])b.api.complete(id);assert.equal(b.api.status().completed.length,7);assert.equal(b.api.status().next,null);assert.ok(b.get('journey-next').textContent.includes('All seven completed'));
+b.api.reset();assert.equal(b.api.status().completed.length,0);assert.equal(store.get('cyberchef-escape-progress'),'keep this data');
+const malformed=boot(new Map([[key,'not JSON']]));assert.equal(malformed.api.status().persistent,true);assert.equal(malformed.api.complete('outsmart'),true);assert.equal(malformed.api.status().completed[0],'outsmart');
+const invalid=boot(new Map([[key,JSON.stringify({version:1,completed:{'wifi-notice':99,'spot-scam':1,unknown:1,outsmart:'1'}})]]));assert.equal(invalid.api.status().completed.join(','),'spot-scam');
+const unavailable=boot(new Map(),true);assert.equal(unavailable.api.complete('outsmart'),false);assert.equal(unavailable.api.status().completed[0],'outsmart');assert.ok(unavailable.get('journey-storage').textContent.includes('unavailable'));
+const quota=boot(new Map(),false,true);assert.equal(quota.api.complete('workday'),false);assert.equal(quota.api.status().completed[0],'workday');quota.api.complete('firewall');assert.equal(quota.api.status().completed.length,2);
+store.set(key,JSON.stringify({version:1,completed:{executive:1}}));b.listeners.storage({key});assert.equal(b.get('journey-count').textContent,'1 / 7 workplace simulations completed');
+for(const [file,hook] of [['assets/quiz/quiz.js',"complete('spot-scam')"],['assets/wifi/wifi.js',"complete('wifi-notice')"],['assets/quiz/workday.js',"complete('workday')"],['outsmart-the-hacker.html',"complete('outsmart')"],['cyber-investigations.html','complete(track)'],['the-executive-call.html',"complete('executive')"]])assert.ok(fs.readFileSync(file,'utf8').includes(hook),file);
+assert.ok(!/fetch\s*\(|XMLHttpRequest|sendBeacon|navigator\.geolocation/.test(source));
+console.log('Journey checks passed: completion-only persistence, no score/answer storage, next challenge, seven distinct activities, unknown/revised record filtering, reload, reset/undo, CyberChef separation, malformed/blocked/quota storage and cross-tab updates.');

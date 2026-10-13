@@ -91,3 +91,9 @@ The six original exercises come from [CyberChef Challenge](https://sites.google.
 This is a learning activity. Static-site answers and progress are inspectable and editable by a participant; local points are not suitable for a trusted competitive leaderboard. No real malware, credential harvesting or live targets are included.
 
 Run `node tests/wifi-interactions.cjs` for the Wi-Fi notice assessment and inspection checks.
+
+## Workplace learning journey
+
+`assets/journey.js` stores only completed activity IDs and their content revisions in the device-local `cyber-team-workplace-progress-v1` key. No answer, score, name, timestamp or contact data is stored. Seven activities are tracked, including the two investigation tracks separately. Completion is recorded on reaching a debrief, irrespective of score. The homepage shows completion badges, a suggested next activity and a reversible reset. CyberChef progress uses its existing separate key. When storage is unavailable, completion is held only for the current page visit.
+
+Run `node tests/journey-interactions.cjs` for storage and navigation checks. `tests/viewport-check.html` renders the live pages inside 320/390/768/1280-pixel frames for browser layout and keyboard checks; it is not linked from the product navigation.
