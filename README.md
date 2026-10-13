@@ -14,16 +14,17 @@ A responsive, browser-based CyberChef training site with **35 challenges**: the 
 
 ## Workplace simulations
 
-The homepage also links to four independent browser-local training experiences:
+The homepage also links to five independent browser-local training experiences:
 
 - `scam-quiz.html`: 14 phishing, smishing and quishing scenarios.
 - `workday.html`: five connected workplace decisions about an invoice and support request.
 - `outsmart-the-hacker.html`: five decisions about unexpected MFA prompts, caller impersonation and a compromised Teams account.
+- `the-executive-call.html`: five connected decisions with a synthetic Teams briefing, timed captions, optional device narration, directory checks and a payment workflow.
 - `cyber-investigations.html`: Spot the Imposter and The Human Firewall, with six cases per track and four evidence checks per case.
 
-These use fictional contacts and simulated Outlook, Teams, phone, consent and sharing interfaces. Decisions and scores remain in memory for the current visit. They make no remote reports, calls, payments, sign-ins or clipboard changes. The director impersonation case currently uses text and a call-screen recreation, without generated voice or video.
+These use fictional contacts and simulated Outlook, Teams, phone, consent and sharing interfaces. Decisions and scores remain in memory for the current visit. They make no remote reports, calls, payments, sign-ins or clipboard changes. The short director case uses text and a call-screen recreation. The Executive Call includes a synthetic still, timed captions and optional browser narration; there is no live or animated video or cloned voice.
 
-Run `node tests/quiz-interactions.cjs`, `node tests/workday-interactions.cjs` and `node tests/investigations-interactions.cjs` from the repository root to check these flows. The investigation tests cover all 128 answer combinations across both tracks.
+Run `node tests/quiz-interactions.cjs`, `node tests/workday-interactions.cjs` `node tests/investigations-interactions.cjs` and `node tests/executive-interactions.cjs` from the repository root to check these flows. The investigation tests cover all 128 answer combinations across both tracks; the executive test covers all 243 answer combinations and caption playback.
 
 ## GitHub Pages
 
